@@ -1,0 +1,10 @@
+{
+  "packTest": [
+    {
+      "type": "image",
+      "key": "imageTest3",
+      "url": "imageTest3.png",
+      "overwrite": false
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "path": "assets/",
+  "atlas": "atlasTest",
+  "atlasJSONArray": "atlasJSONArrayTest",
+  "atlasJSONHash": "atlasJSONHashTest",
+  "atlasXML": "atlasXMLTest",
+  "audio": {
+    "audioTest": "audioTest.mp3"
+  },
+  "audioSprite": {
+    "audioSpriteTest": {
+      "urls": "audioSpriteTest.ogg",
+      "jsonURL": "audioSpriteTest.json"
+    }
+  },
+  "binary": "binaryTest",
+  "bitmapFont": "bitmapFontTest",
+  "image": "imageTest",
+  "images": ["imageTest", "imageTest2"],
+  "json": "jsonTest",
+  "pack": {
+    "packTest": "packTest.json"
+  },
+  "physics":{
+    "physicsTest":"physicsTest.json"
+  },
+  "script":"ScriptTest",
+  "shader": "shaderTest",
+  "spritesheet": {
+    "spritesheetTest": {
+      "url": "spritesheetTest.png",
+      "frameWidth": 70,
+      "frameHeight": 70
+    }
+  },
+  "text":"textTest",
+  "tilemap": "tilemapTest",
+  "video": {
+    "videoTest": "videoTest.mp4"
+  },
+  "xml": "xmlTest"
+}
