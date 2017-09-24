@@ -50,9 +50,9 @@
 
 #### [atlas](http://phaser.io/docs/2.6.2/Phaser.Loader.html#atlas)
     "atlas": "atlasTest"
-    ---
+    --
     "atlas": ["atlasTest", "atlasTest2"]
-    ---
+    --
     "atlas": {
         "atlasTest": {
             "textureURL": "assets/sprites/atlasTest.png",
@@ -60,7 +60,7 @@
             "format": todo //defaults to Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY
         }
     }
-    ---
+    --
     "atlas": {
         "atlasTest": {
             "textureURL": "assets/sprites/atlasTest.png",
@@ -97,6 +97,13 @@ In order to test the AssetLoader, I made a simple Phaser game...
 
 The tests are [here](/test).
 
+Ask for people to put in issues/pr's
+
+Tell how to set json path, build, and open index.html
+
 ## Credits
 This project used the [webpack-library-starter](https://github.com/krasimir/webpack-library-starter) project
 
+Some of the test assets are from the Phaser game [Elemental One]()
+
+Some of the test assets are from [Phaser's example code]()
