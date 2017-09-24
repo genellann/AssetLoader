@@ -1,5 +1,7 @@
 # Phaser Asset Loader
 
+Tell where to get min and how to include in project
+
 ## Code   
 
     class BootState extends Phaser.State {
