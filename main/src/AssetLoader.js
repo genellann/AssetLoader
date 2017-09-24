@@ -99,6 +99,13 @@ class AssetLoader {
 
     // -------- atlas -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [textureURL = <key>.png
+     * @param {string} [atlasURL = <key>.json]
+     * @param {object} [atlasData = null]
+     * @param {number} [format = 0]
+     */
     loadAtlas(data) {
         let key;
         let value;
@@ -136,6 +143,12 @@ class AssetLoader {
 
     // -------- atlasJSONArray -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [textureURL = <key>.png]
+     * @param {string} [atlasURL = <key>.json]
+     * @param {object} [atlasData = null]
+     */
     loadAtlasJSONArray(data) {
         let key;
         let value;
@@ -171,6 +184,12 @@ class AssetLoader {
 
     // -------- atlasJSONHash -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [textureURL = <key>.png]
+     * @param {string} [atlasURL = <key>.json]
+     * @param {object} [atlasData = null]
+     */
     loadAtlasJSONHash(data) {
         let key;
         let value;
@@ -206,6 +225,12 @@ class AssetLoader {
 
     // -------- atlasXML -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [textureURL = <key>.png]
+     * @param {string} [atlasURL = <key>.xml]
+     * @param {object} [atlasData = null]
+     */
     loadAtlasXML(data) {
         let key;
         let value;
@@ -241,6 +266,11 @@ class AssetLoader {
 
     // -------- audio -------- //
 
+    /*
+     * @param {string} key
+     * @param {string | Array.<string> | Array.<object>} urls
+     * @param {boolean} [autoDecode = true]
+     */
     loadAudio(data) {
         let key;
         let value;
@@ -261,6 +291,13 @@ class AssetLoader {
 
     // -------- audioSprite -------- //
 
+    /*
+     * @param {string} key
+     * @param {Array | string} urls
+     * @param {string} [jsonURL = null]
+     * @param {string | object} [jsonData = null]
+     * @param {boolean} [autoDecode = true]
+     */
     loadAudioSprite(data) {
         let key;
         let value;
@@ -286,6 +323,12 @@ class AssetLoader {
 
     // -------- binary -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [url = <key>.bin]
+     * @param {function} [callback = null]
+     * @param {function} [callbackContext = null]
+     */
     loadBinary(data) {
         let key;
         let value;
@@ -321,6 +364,14 @@ class AssetLoader {
 
     // -------- bitmapFont -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [textureURL = <key>.png]
+     * @param {string} [atlasURL = <key>.xml]
+     * @param {object} [atlasData = null]
+     * @param {number} [xSpacing = 0]
+     * @param {number} [ySpacing = 0]
+     */
     loadBitmapFont(data) {
         let key;
         let value;
@@ -360,6 +411,11 @@ class AssetLoader {
 
     // -------- image -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [url = <key>.png]
+     * @param {boolean} [overwrite = false]
+     */
     loadImage(data) {
         let key;
         let value;
@@ -397,6 +453,10 @@ class AssetLoader {
 
     // -------- images -------- //
 
+    /*
+     * @param {Array} keys
+     * @param {Array} [urls = Array.<string>] // The strings in the array will default to <key>.png
+     */
     loadImages(data) {
         let key;
         let i;
@@ -424,6 +484,11 @@ class AssetLoader {
 
     // -------- json -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [url = <key>.json]
+     * @param {boolean} [overwrite = false]
+     */
     loadJSON(data) {
         let key;
         let value;
@@ -461,6 +526,12 @@ class AssetLoader {
 
     // -------- pack -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [url = null] //Must pass either url or data param
+     * @param {object} [data = null]
+     * @param {loader} [callbackContext = null] //If you need to pass a context, you won't be able to do it from an external json, load this in the code base.
+     */
     loadPack(data) {
         let key;
         let value;
@@ -480,6 +551,12 @@ class AssetLoader {
 
     // -------- physics -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [url = <key>.json]
+     * @param {object | string} [data = null]
+     * @param {string} [format = 3]
+     */
     loadPhysics(data) {
         let key;
         let value;
@@ -502,7 +579,7 @@ class AssetLoader {
                 else if (typeof value === "object") {
                     paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
                     paramB = (value.hasOwnProperty("data")) ? value["data"] : null;
-                    paramC = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Physics.LIME_CORONA_JSON;
+                    paramC = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Loader.LIME_CORONA_JSON;
                     this.game.load.physics(key, paramA, paramB, paramC);
                 }
             }
@@ -511,6 +588,12 @@ class AssetLoader {
 
     // -------- script -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [url = <key>.js]
+     * @param {function} [callback = null] //Cannot pass callbacks from json
+     * @param {object} [callbackContext = null]
+     */
     loadScript(data) {
         let key;
         let value;
@@ -538,6 +621,11 @@ class AssetLoader {
 
     // -------- shader -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [url = <key>.frag]
+     * @param {string} [overwrite = false]
+     */
     loadShader(data) {
         let key;
         let value;
@@ -575,6 +663,15 @@ class AssetLoader {
 
     // -------- spritesheet -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} url
+     * @param {number} frameWidth
+     * @param {number} frameHeight
+     * @param {number} [frameMax = -1]
+     * @param {number} [margin = 0]
+     * @param {number} [spacing = 0]
+     */
     loadSpritesheet(data) {
         let key;
         let value;
@@ -608,6 +705,11 @@ class AssetLoader {
 
     // -------- text -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [url = <key>.txt]
+     * @param {boolean} [overwrite = false]
+     */
     loadText(data) {
         let key;
         let value;
@@ -645,6 +747,12 @@ class AssetLoader {
 
     // -------- tilemap -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [url = <key>.json]
+     * @param {object | string} [data = null]
+     * @param {number} [format = 0]
+     */
     loadTilemap(data) {
         let key;
         let value;
@@ -676,6 +784,12 @@ class AssetLoader {
 
     // -------- video -------- //
 
+    /*
+     * @param {string} key
+     * @param {string | Array.<string> | Array.<object>} urls
+     * @param {string} [loadEvent = "canplaythrough"]
+     * @param {boolean} [asBlob = false]
+     */
     loadVideo(data) {
         let key;
         let value;
@@ -700,6 +814,11 @@ class AssetLoader {
 
     // -------- xml -------- //
 
+    /*
+     * @param {string} key
+     * @param {string} [url = <key>.xml]
+     * @param {boolean} [overwrite = false]
+     */
     loadXML(data) {
         let key;
         let value;
