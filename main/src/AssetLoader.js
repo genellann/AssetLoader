@@ -20,427 +20,720 @@
  */
 class AssetLoader {
 
-  /**
-   * Takes in properly formatted json for asset loading.
-   * @param {Phaser.Game} game - A reference to the currently running game.
-   * @param {json} data - The loaded json. You will have to load the json for
-   *     this file manually but everything else can load from the
-   *     AssetLoader.
-   */
-  constructor(game, data) {
-    let key;
-    let value;
-    let i;
-    let paramA;
-    let paramB;
-    let paramC;
-    let paramD;
-    let paramE;
+    /**
+     * Takes in properly formatted json for asset loading.
+     * @param {Phaser.Game} game - A reference to the currently running game.
+     * @param {json} data - The loaded json. You will have to load the json for
+     *     this file manually but everything else can load from the
+     *     AssetLoader.
+     */
+    constructor(game, data) {
+        this.game = game;
+
+        this.loadBaseURL(data.baseURL);
+        this.loadCrossOrigin(data.crossOrigin);
+        this.loadEnableParallel(data.enableParallel);
+        this.loadPath(data.path);
+        this.loadResetLocked(data.resetLocked);
+        this.loadAtlas(data.atlas);
+        this.loadAtlasJSONArray(data.atlasJSONArray);
+        this.loadAtlasJSONHash(data.atlasJSONHash);
+        this.loadAtlasXML(data.atlasXML);
+        this.loadAudio(data.audio);
+        this.loadAudioSprite(data.audioSprite);
+        this.loadBinary(data.binary);
+        this.loadBitmapFont(data.bitmapFont);
+        this.loadImage(data.image);
+        this.loadImages(data.images);
+        this.loadJSON(data.json);
+        this.loadPack(data.pack);
+        this.loadPhysics(data.physics);
+        this.loadScript(data.script);
+        this.loadShader(data.shader);
+        this.loadSpritesheet(data.spritesheet);
+        this.loadText(data.text);
+        this.loadTilemap(data.tilemap);
+        this.loadVideo(data.video);
+        this.loadXML(data.xml);
+    }
 
     // -------- baseURL -------- //
-    let collection = data.baseURL; // TODO: use bracket notation for all
-    if (typeof collection === "string") {
-      game.load.baseURL = collection;
+
+    loadBaseURL(data) {
+        if (typeof data === "string") {
+            this.game.load.baseURL = data;
+        }
     }
 
     // -------- crossOrigin -------- //
-    collection = data.crossOrigin;
-    if (typeof collection === "string" || typeof collection === "boolean") {
-      game.load.crossOrigin = collection;
+
+    loadCrossOrigin(data) {
+        if (typeof data === "string" || typeof data === "boolean") {
+            this.game.load.crossOrigin = data;
+        }
     }
 
     // -------- enableParallel -------- //
-    collection = data.enableParallel;
-    if (typeof collection === "boolean") {
-      game.load.enableParallel = collection;
+
+    loadEnableParallel(data) {
+        if (typeof data === "boolean") {
+            this.game.load.enableParallel = data;
+        }
     }
 
     // -------- path -------- //
-    collection = data.path;
-    if (typeof collection === "string") {
-      game.load.path = collection;
-    }
 
-    // -------- preloadSprite -------- //
-    collection = data.preloadSprite;
-    if (typeof collection === "string") {
-      game.load.setPreloadSprite(collection);
+    loadPath(data) {
+        if (typeof data === "string") {
+            this.game.load.path = data;
+        }
     }
 
     // -------- resetLocked -------- //
-    collection = data.resetLocked;
-    if (typeof collection === "boolean") {
-      game.load.resetLocked = collection;
+
+    loadResetLocked(data) {
+        if (typeof data === "boolean") {
+            this.game.load.resetLocked = data;
+        }
     }
 
     // -------- atlas -------- //
-    collection = data.atlas;
-    if (typeof collection === "string") {
-      game.load.atlas(collection);
-    }
-    else if (Array.isArray(collection)) {
-      for (i = 0; i < collection.length; i++) {
-        if (typeof collection[i] === "string") {
-          game.load.atlas(collection[i]);
+
+    loadAtlas(data) {
+        let key;
+        let value;
+        let i;
+        let paramA;
+        let paramB;
+        let paramC;
+        let paramD;
+        if (typeof data === "string") {
+            this.game.load.atlas(data);
         }
-      }
-    }
-    else if (typeof collection === "object") {
-      for (key in collection) {
-        value = collection[key];
-        if (!value) {
-          // if value is undefined, null, false, 0, nan, ""
-          game.load.atlas(key);
-        } else {
-          paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
-          paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
-          paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
-          paramD = (value.hasOwnProperty("format")) ? value["format"] : null;
-          game.load.atlas(key, paramA, paramB, paramC, paramD);
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.atlas(data[i]);
+                }
+            }
         }
-      }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.atlas(key);
+                } else {
+                    paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
+                    paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
+                    paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
+                    paramD = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY;
+                    this.game.load.atlas(key, paramA, paramB, paramC, paramD);
+                }
+            }
+        }
     }
 
     // -------- atlasJSONArray -------- //
-    collection = data.atlasJSONArray;
-    if (typeof collection === "string") {
-      game.load.atlasJSONArray(collection);
-    }
-    else if (Array.isArray(collection)) {
-      for (i = 0; i < collection.length; i++) {
-        if (typeof collection[i] === "string") {
-          game.load.atlasJSONArray(collection[i]);
+
+    loadAtlasJSONArray(data) {
+        let key;
+        let value;
+        let i;
+        let paramA;
+        let paramB;
+        let paramC;
+        if (typeof data === "string") {
+            this.game.load.atlasJSONArray(data);
         }
-      }
-    }
-    else if (typeof collection === "object") {
-      for (key in collection) {
-        value = collection[key];
-        if (!value) {
-          // if value is undefined, null, false, 0, nan, ""
-          game.load.atlasJSONArray(key);
-        } else {
-          paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
-          paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
-          paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
-          game.load.atlasJSONArray(key, paramA, paramB, paramC);
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.atlasJSONArray(data[i]);
+                }
+            }
         }
-      }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.atlasJSONArray(key);
+                } else {
+                    paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
+                    paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
+                    paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
+                    this.game.load.atlasJSONArray(key, paramA, paramB, paramC);
+                }
+            }
+        }
     }
 
     // -------- atlasJSONHash -------- //
-    collection = data.atlasJSONHash;
-    if (typeof collection === "string") {
-      game.load.atlasJSONHash(collection);
-    }
-    else if (Array.isArray(collection)) {
-      for (i = 0; i < collection.length; i++) {
-        if (typeof collection[i] === "string") {
-          game.load.atlasJSONHash(collection[i]);
+
+    loadAtlasJSONHash(data) {
+        let key;
+        let value;
+        let i;
+        let paramA;
+        let paramB;
+        let paramC;
+        if (typeof data === "string") {
+            this.game.load.atlasJSONHash(data);
         }
-      }
-    }
-    else if (typeof collection === "object") {
-      for (key in collection) {
-        value = collection[key];
-        if (!value) {
-          // if value is undefined, null, false, 0, nan, ""
-          game.load.atlasJSONHash(key);
-        } else {
-          paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
-          paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
-          paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
-          game.load.atlasJSONHash(key, paramA, paramB, paramC);
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.atlasJSONHash(data[i]);
+                }
+            }
         }
-      }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.atlasJSONHash(key);
+                } else {
+                    paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
+                    paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
+                    paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
+                    this.game.load.atlasJSONHash(key, paramA, paramB, paramC);
+                }
+            }
+        }
     }
 
     // -------- atlasXML -------- //
-    collection = data.atlasXML;
-    if (typeof collection === "string") {
-      game.load.atlasXML(collection);
-    }
-    else if (Array.isArray(collection)) {
-      for (i = 0; i < collection.length; i++) {
-        if (typeof collection[i] === "string") {
-          game.load.atlasXML(collection[i]);
+
+    loadAtlasXML(data) {
+        let key;
+        let value;
+        let i;
+        let paramA;
+        let paramB;
+        let paramC;
+        if (typeof data === "string") {
+            this.game.load.atlasXML(data);
         }
-      }
-    }
-    else if (typeof collection === "object") {
-      for (key in collection) {
-        value = collection[key];
-        if (!value) {
-          // if value is undefined, null, false, 0, nan, ""
-          game.load.atlasXML(key);
-        } else {
-          paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
-          paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
-          paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
-          game.load.atlasXML(key, paramA, paramB, paramC);
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.atlasXML(data[i]);
+                }
+            }
         }
-      }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.atlasXML(key);
+                } else {
+                    paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
+                    paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
+                    paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
+                    this.game.load.atlasXML(key, paramA, paramB, paramC);
+                }
+            }
+        }
     }
 
     // -------- audio -------- //
-    collection = data.audio;
-    for (key in collection) {
-      value = collection[key];
-      if (typeof value === "string" || Array.isArray(value)) {
-        game.load.audio(key, value);
-      }
-      else if (typeof value === "object") {
-        paramA = (value.hasOwnProperty("urls")) ? value["urls"] : null;
-        paramB = (value.hasOwnProperty("autoDecode")) ? value["autoDecode"] : true;
-        game.load.audio(key, paramA, paramB);
-      }
+
+    loadAudio(data) {
+        let key;
+        let value;
+        let paramA;
+        let paramB;
+        for (key in data) {
+            value = data[key];
+            if (typeof value === "string" || Array.isArray(value)) {
+                this.game.load.audio(key, value);
+            }
+            else if (typeof value === "object") {
+                paramA = (value.hasOwnProperty("urls")) ? value["urls"] : null;
+                paramB = (value.hasOwnProperty("autoDecode")) ? value["autoDecode"] : true;
+                this.game.load.audio(key, paramA, paramB);
+            }
+        }
     }
 
     // -------- audioSprite -------- //
-    collection = data.audioSprite;
-    for (key in collection) {
-      value = collection[key];
-      if (typeof value === "string" || Array.isArray(value)) {
-        game.load.audioSprite(key, value);
-      }
-      else if (typeof value === "object") {
-        paramA = (value.hasOwnProperty("urls")) ? value["urls"] : null;
-        paramB = (value.hasOwnProperty("jsonURL")) ? value["jsonURL"] : null;
-        paramC = (value.hasOwnProperty("jsonData")) ? value["jsonData"] : null;
-        paramD = (value.hasOwnProperty("autoDecode")) ? value["autoDecode"] : true;
-        game.load.audioSprite(key, paramA, paramB, paramC, paramD);
-      }
+
+    loadAudioSprite(data) {
+        let key;
+        let value;
+        let paramA;
+        let paramB;
+        let paramC;
+        let paramD;
+        for (key in data) {
+            value = data[key];
+            //todo have to have jsonURL or jsonData
+            if (typeof value === "string" || Array.isArray(value)) {
+                this.game.load.audioSprite(key, value);
+            }
+            else if (typeof value === "object") {
+                paramA = (value.hasOwnProperty("urls")) ? value["urls"] : null;
+                paramB = (value.hasOwnProperty("jsonURL")) ? value["jsonURL"] : null;
+                paramC = (value.hasOwnProperty("jsonData")) ? value["jsonData"] : null;
+                paramD = (value.hasOwnProperty("autoDecode")) ? value["autoDecode"] : true;
+                this.game.load.audioSprite(key, paramA, paramB, paramC, paramD);
+            }
+        }
     }
 
     // -------- binary -------- //
-    collection = data.binary;
-    if (typeof collection === "string") {
-      game.load.binary(collection);
-    }
-    else if (Array.isArray(collection)) {
-      for (i = 0; i < collection.length; i++) {
-        if (typeof collection[i] === "string") {
-          game.load.binary(collection[i]);
+
+    loadBinary(data) {
+        let key;
+        let value;
+        let i;
+        if (typeof data === "string") {
+            this.game.load.binary(data);
         }
-      }
-    }
-    else if (typeof collection === "object") {
-      for (key in collection) {
-        value = collection[key];
-        if (!value) {
-          // if value is undefined, null, false, 0, nan, ""
-          game.load.binary(key);
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.binary(data[i]);
+                }
+            }
         }
-        else if (typeof value === "string") {
-          game.load.binary(key, value);
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.binary(key);
+                }
+                else if (typeof value === "string") {
+                    this.game.load.binary(key, value);
+                }
+                else if (typeof value === "object") {
+                    if (value.hasOwnProperty("url")) {
+                        this.game.load.binary(key, value["url"]);
+                    }
+                }
+            }
         }
-        else if (typeof value === "object") {
-          if (value.hasOwnProperty("url")) {
-            game.load.binary(key, value["url"]);
-          }
-        }
-      }
     }
 
     // -------- bitmapFont -------- //
-    collection = data.bitmapFont;
-    if (typeof collection === "string") {
-      game.load.bitmapFont(collection);
-    }
-    else if (Array.isArray(collection)) {
-      for (i = 0; i < collection.length; i++) {
-        if (typeof collection[i] === "string") {
-          game.load.bitmapFont(collection[i]);
+
+    loadBitmapFont(data) {
+        let key;
+        let value;
+        let i;
+        let paramA;
+        let paramB;
+        let paramC;
+        let paramD;
+        let paramE;
+        if (typeof data === "string") {
+            this.game.load.bitmapFont(data);
         }
-      }
-    }
-    else if (typeof collection === "object") {
-      for (key in collection) {
-        value = collection[key];
-        if (!value) {
-          // if value is undefined, null, false, 0, nan, ""
-          game.load.bitmapFont(key);
-        } else {
-          paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
-          paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
-          paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
-          paramD = (value.hasOwnProperty("xSpacing")) ? value["xSpacing"] : 0;
-          paramE = (value.hasOwnProperty("ySpacing")) ? value["ySpacing"] : 0;
-          game.load.bitmapFont(key, paramA, paramB, paramC, paramD, paramE);
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.bitmapFont(data[i]);
+                }
+            }
         }
-      }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.bitmapFont(key);
+                } else {
+                    paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
+                    paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
+                    paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
+                    paramD = (value.hasOwnProperty("xSpacing")) ? value["xSpacing"] : 0;
+                    paramE = (value.hasOwnProperty("ySpacing")) ? value["ySpacing"] : 0;
+                    this.game.load.bitmapFont(key, paramA, paramB, paramC, paramD, paramE);
+                }
+            }
+        }
     }
 
     // -------- image -------- //
-    collection = data.image;
-    if (typeof collection === "string") {
-      game.load.image(collection);
-    }
-    else if (Array.isArray(collection)) {
-      for (i = 0; i < collection.length; i++) {
-        if (typeof collection[i] === "string") {
-          game.load.image(collection[i]);
+
+    loadImage(data) {
+        let key;
+        let value;
+        let i;
+        let paramA;
+        let paramB;
+        if (typeof data === "string") {
+            this.game.load.image(data);
         }
-      }
-    }
-    else if (typeof collection === "object") {
-      for (key in collection) {
-        value = collection[key];
-        if (!value) {
-          // if value is undefined, null, false, 0, nan, ""
-          game.load.image(key);
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.image(data[i]);
+                }
+            }
         }
-        else if (typeof value === "string") {
-          game.load.image(key, value);
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.image(key);
+                }
+                else if (typeof value === "string") {
+                    this.game.load.image(key, value);
+                }
+                else if (typeof value === "object") {
+                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".png";
+                    paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
+                    this.game.load.image(key, paramA, paramB);
+                }
+            }
         }
-        else if (typeof value === "object") {
-          paramA = (value.hasOwnProperty("url")) ? value["url"] : null;
-          paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
-          game.load.image(key, paramA, paramB);
-        }
-      }
     }
 
     // -------- images -------- //
-    collection = data.images;
-    if (Array.isArray(collection)) {
-      if (typeof collection[0] === "string") {
-        game.load.images(collection);
-      }
-      else if (typeof collection[0] === "object") {
-        for (i = 0; i < collection.length; i++) {
-          key = collection[i];
-          paramA = (key.hasOwnProperty("keys")) ? key["keys"] : null;
-          paramB = (key.hasOwnProperty("urls")) ? key["urls"] : false;
-          game.load.images(key, paramA, paramB);
+
+    loadImages(data) {
+        let key;
+        let i;
+        let paramA;
+        let paramB;
+        if (Array.isArray(data)) {
+            if (typeof data[0] === "string") {
+                this.game.load.images(data);
+            }
+            else if (typeof data[0] === "object") {
+                for (i = 0; i < data.length; i++) {
+                    key = data[i];
+                    paramA = (key.hasOwnProperty("keys")) ? key["keys"] : null;
+                    paramB = (key.hasOwnProperty("urls")) ? key["urls"] : false;
+                    this.game.load.images(key, paramA, paramB);
+                }
+            }
         }
-      }
-    }
-    else if (typeof collection === "object") {
-      paramA = (collection.hasOwnProperty("keys")) ? collection["keys"] : null;
-      paramB = (collection.hasOwnProperty("urls")) ? collection["urls"] : false;
-      game.load.images(key, paramA, paramB);
+        else if (typeof data === "object") {
+            paramA = (data.hasOwnProperty("keys")) ? data["keys"] : null;
+            paramB = (data.hasOwnProperty("urls")) ? data["urls"] : false;
+            this.game.load.images(key, paramA, paramB);
+        }
     }
 
     // -------- json -------- //
-    collection = data.json;
-    if (typeof collection === "string") {
-      game.load.json(collection);
-    }
-    else if (Array.isArray(collection)) {
-      for (i = 0; i < collection.length; i++) {
-        if (typeof collection[i] === "string") {
-          game.load.json(collection[i]);
+
+    loadJSON(data) {
+        let key;
+        let value;
+        let i;
+        let paramA;
+        let paramB;
+        if (typeof data === "string") {
+            this.game.load.json(data);
         }
-      }
-    }
-    else if (typeof collection === "object") {
-      for (key in collection) {
-        value = collection[key];
-        if (!value) {
-          // if value is undefined, null, false, 0, nan, ""
-          game.load.json(key);
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.json(data[i]);
+                }
+            }
         }
-        else if (typeof value === "string") {
-          game.load.json(key, value);
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.json(key);
+                }
+                else if (typeof value === "string") {
+                    this.game.load.json(key, value);
+                }
+                else if (typeof value === "object") {
+                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
+                    paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
+                    this.game.load.json(key, paramA, paramB);
+                }
+            }
         }
-        else if (typeof value === "object") {
-          paramA = (value.hasOwnProperty("url")) ? value["url"] : null;
-          paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
-          game.load.json(key, paramA, paramB);
-        }
-      }
     }
 
     // -------- pack -------- //
-    collection = data.pack;
-    if (typeof collection === "string") {
-      game.load.pack(collection);
-    }
-    else if (Array.isArray(collection)) {
-      for (i = 0; i < collection.length; i++) {
-        if (typeof collection[i] === "string") {
-          game.load.pack(collection[i]);
+
+    loadPack(data) {
+        let key;
+        let value;
+        for (key in data) {
+            value = data[key];
+            if (typeof value === "string") {
+                this.game.load.pack(key, value);
+            }
+            // todo either or thing again with url or data
+            else if (typeof value === "object") {
+                paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
+                paramB = (value.hasOwnProperty("data")) ? value["data"] : null;
+                this.game.load.physics(key, paramA, paramB);
+            }
         }
-      }
-    }
-    else if (typeof collection === "object") {
-      for (key in collection) {
-        value = collection[key];
-        if (!value) {
-          // if value is undefined, null, false, 0, nan, ""
-          game.load.pack(key);
-        }
-        else if (typeof value === "string") {
-          game.load.pack(key, value);
-        }
-        // TODO: this will break if trying to pass an Asset Pack JSON and it
-        // only has one field called "url" or "data". Look at an example of an
-        // Asset Pack JSON and see if this can happen. TODO: fix others above
-        // where it's url or json
-        else if (typeof value === "object" && Object.keys(value).length === 1) {
-          if (value.hasOwnProperty("url")) {
-            game.load.pack(key, value["url"]);
-          }
-          else if (value.hasOwnProperty("data")) {
-            game.load.pack(key, null, value["data"]);
-          }
-        }
-        else if (typeof value === "object") {
-          game.load.pack(key, null, value);
-        }
-      }
     }
 
     // -------- physics -------- //
-    collection = data.physics;
-    for (key in collection) {
-      value = collection[key];
-      game.load.physics(key, value["url"], value["data"], value["format"]);
+
+    loadPhysics(data) {
+        let key;
+        let value;
+        let paramA;
+        let paramB;
+        let paramC;
+        if (typeof data === "string") {
+            this.game.load.physics(data);
+        }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.physics(key);
+                }
+                else if (typeof value === "string") {
+                    this.game.load.physics(key, value);
+                }
+                else if (typeof value === "object") {
+                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
+                    paramB = (value.hasOwnProperty("data")) ? value["data"] : null;
+                    paramC = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Physics.LIME_CORONA_JSON;
+                    this.game.load.physics(key, paramA, paramB, paramC);
+                }
+            }
+        }
     }
 
-    collection = data.script;
-    for (key in collection) {
-      value = collection[key];
-      game.load.script(key, value["url"]);
+    // -------- script -------- //
+
+    loadScript(data) {
+        let key;
+        let value;
+        let paramA;
+        if (typeof data === "string") {
+            this.game.load.script(data);
+        }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.script(key);
+                }
+                else if (typeof value === "string") {
+                    this.game.load.script(key, value);
+                }
+                else if (typeof value === "object") {
+                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".js";
+                    this.game.load.script(key, paramA);
+                }
+            }
+        }
     }
 
-    collection = data.shader;
-    for (key in collection) {
-      value = collection[key];
-      game.load.shader(key, value["url"], value["overwrite"]);
+    // -------- shader -------- //
+
+    loadShader(data) {
+        let key;
+        let value;
+        let i;
+        let paramA;
+        let paramB;
+        if (typeof data === "string") {
+            this.game.load.shader(data);
+        }
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.shader(data[i]);
+                }
+            }
+        }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.shader(key);
+                }
+                else if (typeof value === "string") {
+                    this.game.load.shader(key, value);
+                }
+                else if (typeof value === "object") {
+                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".frag";
+                    paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
+                    this.game.load.shader(key, paramA, paramB);
+                }
+            }
+        }
     }
 
-    collection = data.spritesheet;
-    for (key in collection) {
-      value = collection[key];
-      game.load.spritesheet(key, value["url"], value["frameWidth"], value["frameHeight"], value["frameMax"], value["margin"], value["spacing"]);
+    // -------- spritesheet -------- //
+
+    loadSpritesheet(data) {
+        let key;
+        let value;
+        let paramA;
+        let paramB;
+        let paramC;
+        let paramD;
+        let paramE;
+        let paramF;
+        for (key in data) {
+            value = data[key];
+            paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".png";
+            if (value.hasOwnProperty("frameWidth")) {
+                paramB = value["frameWidth"];
+            } else {
+                paramB = 0;
+                console.log("spritesheets must have a 'frameWidth' specified");
+            }
+            if (value.hasOwnProperty("frameHeight")) {
+                paramC = value["frameHeight"];
+            } else {
+                paramC = 0;
+                console.log("spritesheets must have a 'frameHeight' specified");
+            }
+            paramD = (value.hasOwnProperty("frameMax")) ? value["frameMax"] : -1;
+            paramE = (value.hasOwnProperty("margin")) ? value["margin"] : 0;
+            paramF = (value.hasOwnProperty("spacing")) ? value["spacing"] : 0;
+            this.game.load.spritesheet(key, paramA, paramB, paramC, paramD, paramE, paramF);
+        }
     }
 
-    collection = data.text;
-    for (key in collection) {
-      value = collection[key];
-      game.load.text(key, value["url"], value["overwrite"]);
+    // -------- text -------- //
+
+    loadText(data) {
+        let key;
+        let value;
+        let i;
+        let paramA;
+        let paramB;
+        if (typeof data === "string") {
+            this.game.load.text(data);
+        }
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.text(data[i]);
+                }
+            }
+        }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.text(key);
+                }
+                else if (typeof value === "string") {
+                    this.game.load.text(key, value);
+                }
+                else if (typeof value === "object") {
+                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".txt";
+                    paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
+                    this.game.load.text(key, paramA, paramB);
+                }
+            }
+        }
     }
 
-    collection = data.tilemap;
-    for (key in collection) {
-      value = collection[key];
-      game.load.tilemap(key, value["url"], value["data"], value["format"]);
+    // -------- tilemap -------- //
+
+    loadTilemap(data) {
+        let key;
+        let value;
+        let paramA;
+        let paramB;
+        let paramC;
+        if (typeof data === "string") {
+            this.game.load.tilemap(data);
+        }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.tilemap(key);
+                }
+                else if (typeof value === "string") {
+                    this.game.load.tilemap(key, value);
+                }
+                else if (typeof value === "object") {
+                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
+                    paramB = (value.hasOwnProperty("data")) ? value["data"] : null;
+                    paramC = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Tilemap.CSV;
+                    this.game.load.tilemap(key, paramA, paramB, paramC);
+                }
+            }
+        }
     }
 
-    collection = data.video;
-    for (key in collection) {
-      value = collection[key];
-      game.load.video(key, value["urls"], value["loadEvent"], value["asBlob"]);
+    // -------- video -------- //
+
+    loadVideo(data) {
+        let key;
+        let value;
+        let paramA;
+        let paramB;
+        let paramC;
+        if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (typeof value === "string" || Array.isArray(value)) {
+                    this.game.load.video(key, value);
+                }
+                else if (typeof value === "object") {
+                    paramA = (value.hasOwnProperty("urls")) ? value["urls"] : null;
+                    paramB = (value.hasOwnProperty("loadEvent")) ? value["loadEvent"] : "canplaythrough";
+                    paramC = (value.hasOwnProperty("asBlob")) ? value["asBlob"] : false;
+                    this.game.load.video(key, paramA, paramB, paramC);
+                }
+            }
+        }
     }
 
-    collection = data.xml;
-    for (key in collection) {
-      value = collection[key];
-      game.load.xml(key, value["url"], value["overwrite"]);
+    // -------- xml -------- //
+
+    loadXML(data) {
+        let key;
+        let value;
+        let i;
+        let paramA;
+        let paramB;
+        if (typeof data === "string") {
+            this.game.load.xml(data);
+        }
+        else if (Array.isArray(data)) {
+            for (i = 0; i < data.length; i++) {
+                if (typeof data[i] === "string") {
+                    this.game.load.xml(data[i]);
+                }
+            }
+        }
+        else if (typeof data === "object") {
+            for (key in data) {
+                value = data[key];
+                if (!value) {
+                    // if value is undefined, null, false, 0, nan, ""
+                    this.game.load.xml(key);
+                }
+                else if (typeof value === "string") {
+                    this.game.load.xml(key, value);
+                }
+                else if (typeof value === "object") {
+                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".xml";
+                    paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
+                    this.game.load.xml(key, paramA, paramB);
+                }
+            }
+        }
     }
-  }
 }
 
 export default AssetLoader;
