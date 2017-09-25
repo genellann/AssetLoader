@@ -1,9 +1,4 @@
 {
-  "baseURL": "",
-  "crossOrigin": "",
-  "enableParallel": true,
-  "path": "",
-  "resetLocked": false,
   "atlas": {},
   "atlasJSONArray": {},
   "atlasJSONHash": {},

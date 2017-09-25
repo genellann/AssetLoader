@@ -1,0 +1,212 @@
+{
+  "atlas": {
+    "atlasTest": "atlasTest",
+    "atlasTest1": ["atlasTest1", "atlasTest2"],
+    "atlasTest2": {
+      "textureURL": "assets/atlasTest3.png",
+      "atlasURL": "assets/atlasTest3.json"
+    },
+    "atlasTest3": {
+      "textureURL": "assets/atlasTest4.png",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasTest4": {
+      "textureURL": "assets/atlasTest5.png",
+      "atlasURL": "assets/atlasTest5.json",
+      "format": 1
+    }
+  },
+  "atlasJSONArray": {
+    "atlasJSONArrayTest1": "atlasJSONArrayTest",
+    "atlasJSONArrayTest2": ["atlasJSONArrayTest1", "atlasJSONArrayTest2"],
+    "atlasJSONArrayTest3": {
+      "textureURL": "assets/atlasJSONArrayTest3.png",
+      "atlasURL": "assets/atlasJSONArrayTest3.json"
+    },
+    "atlasJSONArrayTest4": {
+      "textureURL": "assets/atlasJSONArrayTest4.png",
+      "atlasData": {
+        "test": "test"
+      }
+    }
+  },
+  "atlasJSONHash": {
+    "atlasJSONHashTest1": "atlasJSONHashTest",
+    "atlasJSONHashTest2": ["atlasJSONHashTest1", "atlasJSONHashTest2"],
+    "atlasJSONHashTest3": {
+      "textureURL": "assets/atlasJSONHashTest3.png",
+      "atlasURL": "assets/atlasJSONHashTest3.json"
+    },
+    "atlasJSONHashTest4": {
+      "textureURL": "assets/atlasJSONHashTest4.png",
+      "atlasData": {
+        "test": "test"
+      }
+    }
+  },
+  "atlasXML": {
+    "atlasXMLTest1": "atlasXMLTest",
+    "atlasXMLTest2": ["atlasXMLTest1", "atlasXMLTest2"],
+    "atlasXMLTest3": {
+      "textureURL": "assets/atlasXMLTest3.png",
+      "atlasURL": "assets/atlasXMLTest3.xml"
+    },
+    "atlasXMLTest4": {
+      "textureURL": "assets/atlasXMLTest4.png",
+      "atlasData": {
+        "test": "test"
+      }
+    }
+  },
+  "audio": {
+    "audioTest1": "assets/audioTest.mp3",
+    "audioTest2": ["assets/audioTest1.mp3", "assets/audioTest1.wav"],
+    "audioTest3": {
+      "urls": "assets/audioTest2.mp3",
+      "autoDecode": false
+    },
+    "audioTest4": {
+      "urls": ["assets/audioTest3.mp3", "assets/audioTest3.wav"]
+    }
+  },
+  "audioSprite": {
+    "audioSpriteTest1": "assets/audioSpriteTest.ogg",
+    "audioSpriteTest2": ["assets/audioSpriteTest1.mp3", "assets/audioSpriteTest1.wav"],
+    "audioSpriteTest3": {
+      "urls": "assets/audioSpriteTest2.mp3",
+      "jsonURL": "assets/audioSpriteTest2.json",
+      "autoDecode": false
+    },
+    "audioSpriteTest4": {
+      "urls": ["assets/audioSpriteTest3.mp3", "assets/audioSpriteTest3.wav"],
+      "jsonData": {
+        "test": "test"
+      }
+    }
+  },
+  "binary": {
+    "binaryTest": "assets/binaryTest.bin"
+  },
+  "bitmapFont": {
+    "bitmapFontTest1": "bitmapFontTest",
+    "bitmapFontTest2": ["bitmapFontTest1", "bitmapFontTest2"],
+    "bitmapFontTest3": {
+      "textureURL": "assets/bitmapFontTest3.png",
+      "atlasURL": "assets/bitmapFontTest3.xml",
+      "xSpacing": 10,
+      "ySpacing": 5
+    },
+    "bitmapFontTest4": {
+      "textureURL": "assets/bitmapFontTest4.png",
+      "atlasData": {
+        "test": "test"
+      }
+    }
+  },
+  "image": {
+    "imageTest1": "assets/images/imageTest.png",
+    "imageTest2": {
+      "url": "assets/imageTest.jpeg",
+      "overwrite": true
+    }
+  },
+  "images": {
+    "keys": ["imagesTest3", "imagesTest4"],
+    "urls": ["imagesTest3.png", "imagesTest4.jpeg"]
+  },
+  "json": {
+    "jsonTest1": "assets/jsonTest.json",
+    "jsonTest2": {
+      "url": "assets/jsonTest1.json",
+      "overwrite": true
+    }
+  },
+  "pack": {
+    "packTest1": "assets/packTest.json",
+    "packTest2": {
+      "test": "test"
+    }
+  },
+  "physics": {
+    "physicsTest1": "assets/physicsTest.json",
+    "physicsTest2": {
+      "url": "assets/physicsTest1.json",
+      "format": 4
+    },
+    "physicsTest3": {
+      "data": "assets/physicsTest2.png"
+    },
+    "physicsTest4": {
+      "data": {
+        "test": "test"
+      }
+    }
+  },
+  "script": {
+    "scriptTest1": "assets/ScriptTest.js"
+  },
+  "shader": {
+    "shaderTest1": "assets/shaderTest.frag",
+    "shaderTest2": {
+      "url": "assets/shaderTest1.frag",
+      "overwrite": true
+    }
+  },
+  "spritesheet": {
+    "spritesheetTest": {
+      "url": "assets/spritesheetTest.png",
+      "frameWidth": 70,
+      "frameHeight": 70,
+      "margin": 0
+    }
+  },
+  "text": {
+    "textTest1": "assets/textTest.txt",
+    "textTest2": {
+      "url": "assets/textTest1.txt",
+      "overwrite": true
+    }
+  },
+  "tilemap": {
+    "tilemapTest1": "assets/tilemapTest.json",
+    "tilemapTest2": {
+      "url": "assets/tilemapTest1.json",
+      "format": 1
+    },
+    "tilemapTest3": {
+      "data": "assets/tilemapTest2.png"
+    },
+    "tilemapTest4": {
+      "data": {
+        "test": "test"
+      }
+    }
+  },
+  "video": {
+    "videoTest1": "assets/videoTest.mp4",
+    "videoTest2": ["assets/videoTest1.mp4", "assets/videoTest2.mp4"],
+    "videoTest3": [{}, {}],
+    "videoTest4": {
+      "urls": "assets/videoTest3.mp4",
+      "loadEvent": "loadeddata"
+    },
+    "videoTest5": {
+      "urls": ["assets/videoTest4.mp4", "assets/videoTest5.mp4"],
+      "asBlob": true
+    },
+    "videoTest6": {
+      "urls": [{}, {}],
+      "loadEvent": "canplay",
+      "asBlob": true
+    }
+  },
+  "xml": {
+    "xmlTest1": "assets/xmlTest.xml",
+    "xmlTest2": {
+      "url": "assets/xmlTest1.xml",
+      "overwrite": true
+    }
+  }
+}

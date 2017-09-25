@@ -9,11 +9,8 @@ class AssetKeys {
 }
 
 Object.defineProperties(AssetKeys, {
-    "ASSETS_JSON": {
-        value: {
-            "key": "assets",
-            "path": "data/version1/assets.json"
-        }
+    "ASSETS": {
+        value: "assets"
     },
     "PRELOAD_SPRITE": {
         value: "imageTest"

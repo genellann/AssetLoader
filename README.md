@@ -4,9 +4,13 @@ Tell where to get min and how to include in project
 
 phaser version
 
+Explain that some things have to be loaded within the src code (callbacks)
+
+Preload sprite convo
+
 ## Code   
 
-    json = {
+    assets.json = {
         "image": {
             "example": "example.png"
         }
@@ -15,7 +19,7 @@ phaser version
     class BootState extends Phaser.State {
     
         preload() {
-            this.game.load.json("assets", "data/assets.json");
+            this.game.load.json("assets", "assets.json");
         }
     
         create() {
@@ -40,6 +44,9 @@ phaser version
     }
 
 ## JSON
+fields in **bold** mean you must include either/or
+
+fields in _italics_ mean optional. If you exclude the field, it will default to something
 
 #### [baseURL](http://phaser.io/docs/2.6.2/Phaser.Loader.html#baseURL) {string}
     "baseURL": "absolute/path"
@@ -61,28 +68,41 @@ phaser version
 #### [atlas(key, textureURL, atlasURL, atlasData, format)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#atlas)
     /**
      * @param {string} key 
-     * @param {string} [textureURL = <key>.png
+     * @param {string} [textureURL = <key>.png]
      * @param {string} [atlasURL = <key>.json]
      * @param {object} [atlasData = null]
      * @param {number} [format = 0]
      */
-    --
-    "atlas": "example"
-    -
-    "atlas": ["example1", "example2"]
-    -
+    
+"atlas": "key"
+
+"atlas": ["key", "key"]
+
+"atlas": {
+    "key": {
+        "textureURL": "relative/path/name.png",
+        **"atlasURL"**: "relative/path/name.json",
+        **"atlasData"**: {
+            // You can put the json object here directly. If you do, "atlasURL" will be ignored. It's either/or. 
+        },
+        _"format"_: 1
+    }
+}
+
     "atlas": {
-        "example": {
-            "textureURL": "relative/path/example.png",
-            "atlasURL": "relative/path/example.json",
-            "format": 1
+        "key": {
+            "textureURL": "relative/path/name.png",
+            **"atlasURL"**: "relative/path/name.json",
+            **"atlasData"**: {
+                // You can put the json object here directly. If you do, "atlasURL" will be ignored. It's either/or. 
+            },
+            _"format"_: 1
         }
     }
-    --
-    FORMATS:
-    Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY = 0; (default)
-    Phaser.Loader.TEXTURE_ATLAS_JSON_HASH = 1;
-    Phaser.Loader.TEXTURE_ATLAS_XML_STARLING = 2;
+FORMATS:
+Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY = 0; (default)
+Phaser.Loader.TEXTURE_ATLAS_JSON_HASH = 1;
+Phaser.Loader.TEXTURE_ATLAS_XML_STARLING = 2;
     
 #### [atlasJSONArray(key, textureURL, atlasURL, atlasData)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#atlasJSONArray)
     /**
@@ -92,20 +112,21 @@ phaser version
      * @param {object} [atlasData = null]
      */
     --
-    "atlasJSONArray": "example"
+    "atlasJSONArray": "key"
     -
-    "atlasJSONArray": ["example1", "example2"]
+    "atlasJSONArray": ["key", "key"]
     -
     "atlasJSONArray": {
-        "example1": "example", //the key is "example" in this case, not "example1"
-        "example2": {
-            "textureURL": "relative/path/example.png",
-            "atlasURL": "relative/path/example.json"
+        "irrelevant": "key",
+        "irrelevant": ["key", "key"],
+        "key": {
+            "textureURL": "relative/path/name.png",
+            "atlasURL": "relative/path/name.json"
         },
-        "example3": {
-            "textureURL": "relative/path/example.png",
+        "key": {
+            "textureURL": "relative/path/name.png",
             "atlasData": { 
-               // json data obj
+               //data obj
             }
         }
     }
@@ -121,20 +142,21 @@ Same as atlasJSONArray
      * @param {object} [atlasData = null]
      */
     --
-    "atlasXML": "example"
+    "atlasXML": "key"
     -
-    "atlasXML": ["example1", "example2"]
+    "atlasXML": ["key", "key"]
     -
     "atlasXML": {
-        "example1": "example", //the key is "example" in this case, not "example1"
-        "example2": {
-            "textureURL": "relative/path/example.png",
-            "atlasURL": "relative/path/example.xml"
+        "irrelevant": "key",
+        "irrelevant": ["key", "key"],
+        "key": {
+            "textureURL": "relative/path/name.png",
+            "atlasURL": "relative/path/name.xml"
         },
-        "example3": {
-            "textureURL": "relative/path/example.png",
+        "key": {
+            "textureURL": "relative/path/name.png",
             "atlasData": { 
-               // xml data obj
+               //data obj
             }
         }
     }
@@ -147,14 +169,14 @@ Same as atlasJSONArray
      */
      --
     "audio": {
-        "example1": "relative/path/example.mp3",
-        "example2": ["relative/path/example.mp3", "relative/path/example.wav"],
-        "example3": {
-            "urls": "relative/path/example.mp3",
+        "key": "relative/path/name.mp3",
+        "key": ["relative/path/name.mp3", "relative/path/name.wav"],
+        "key": {
+            "urls": "relative/path/name.mp3",
             "autoDecode": false
         },
-        "example4": {
-            "urls": ["relative/path/example.mp3", "relative/path/example.wav"]
+        "key": {
+            "urls": ["relative/path/name.mp3", "relative/path/name.wav"]
         }
     }
          
@@ -168,18 +190,19 @@ Same as atlasJSONArray
      */
     --
     "audioSprite": {
-        "example1": "relative/path/example.mp3",
-        "example2": ["relative/path/example.mp3", "relative/path/example.wav"],
-        "example3": {
-            "urls": "relative/path/example.mp3",
-            "jsonURL": "relative/path/example.json,
+        "key": "relative/path/name.mp3",
+        "key": ["relative/path/name.mp3", "relative/path/name.wav"],
+        "key": {
+            "urls": "relative/path/name.mp3",
+            "jsonURL": "relative/path/name.json,
             "autoDecode": false
         },
-        "example4": {
-            "urls": ["relative/path/example.mp3", "relative/path/example.wav"],
+        "key": {
+            "urls": ["relative/path/name.mp3", "relative/path/name.wav"],
             "jsonData": {
-                // json data obj
-            }
+                //data obj
+            },
+            "autoDecode": true
         }
     }
 #### [binary(key, url, callback, callbackContext)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#binary)
@@ -190,12 +213,12 @@ Same as atlasJSONArray
      * @param {function} [callbackContext = null]
      */
     --
-    "binary": "example"
+    "binary": "key"
     -
-    "binary": ["example1", "example2"]
+    "binary": ["key", "key"]
     -
     "binary": {
-        "example": "example.bin" //"key": "url" (with file ext)
+        "key": "relative/path/name.bin"
     }
      
 #### [bitmapFont(key, textureURL, atlasURL, atlasData, xSpacing, ySpacing)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#bitmapFont)
@@ -208,22 +231,23 @@ Same as atlasJSONArray
      * @param {number} [ySpacing = 0]
      */
     --
-    "bitmapFont": "example"
+    "bitmapFont": "key"
     -
-    "bitmapFont": ["example1", "example2"]
+    "bitmapFont": ["key", "key"]
     -
     "bitmapFont": {
-        "example1": "example", //the key is "example" in this case, not "example1"
-        "example2": {
-            "textureURL": "relative/path/example.png",
-            "atlasURL": "relative/path/example.xml",
+        "irrelevant": "key",
+        "irrelevant": ["key", "key"],
+        "key": {
+            "textureURL": "relative/path/name.png",
+            "atlasURL": "relative/path/name.xml",
             "xSpacing": 10,
             "ySpacing": 5
         },
-        "example3": {
-            "textureURL": "relative/path/example.png",
+        "key": {
+            "textureURL": "relative/path/name.png",
             "atlasData": { 
-               // xml data obj
+               //data obj
             }
         }
     }
@@ -235,14 +259,14 @@ Same as atlasJSONArray
      * @param {boolean} [overwrite = false]
      */
     --
-    "image": "example"
+    "image": "key"
     -
-    "image": ["example1", "example2"]
+    "image": ["key", "key"]
     -
     "image": {
-        "example1": "relative/path/example.png", //"key": "url" (with file ext)
-        "example2": {
-            "url": "relative/path/example.jpeg",
+        "key": "relative/path/name.png",
+        "key": {
+            "url": "relative/path/name.jpeg",
             "overwrite": true
         }
     }
@@ -253,14 +277,11 @@ Same as atlasJSONArray
      * @param {Array} [urls = Array.<string>] // The strings in the array will default to <key>.png
      */
     --
-    "images": ["example1", "example2"]
+    "images": ["key", "key"]
     -
     "images": {
-        "example1": ["example1", "example2"],
-        "example2": {
-            "keys": ["example1", "example2"],
-            "urls": ["example1.png", "example2.jpeg"]
-        }
+        "keys": ["key", "key"],
+        "urls": ["relative/path/name.png", "relative/path/name.jpeg"]
     }
      
 #### [json(key, url, overwrite)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#json)
@@ -270,14 +291,14 @@ Same as atlasJSONArray
      * @param {boolean} [overwrite = false]
      */
     --
-    "json": "example"
+    "json": "key"
     -
-    "json": ["example1", "example2"]
+    "json": ["key", "key"]
     -
     "json": {
-        "example1": "relative/path/example.json", //"key": "url" (with file ext)
-        "example2": {
-            "url": "relative/path/example.json",
+        "key": "relative/path/name.json",
+        "key": {
+            "url": "relative/path/name.json",
             "overwrite": true
         }
     }
@@ -291,9 +312,9 @@ Same as atlasJSONArray
       */
     --
     "pack": {
-        "example1": "relative/path/example.json",
-        "example2": {
-            // json data obj
+        "key": "relative/path/name.json",
+        "key": {
+            //data obj
         }
     }
       
@@ -305,22 +326,22 @@ Same as atlasJSONArray
      * @param {string} [format = 3]
      */
     --
-    "physics": "example"
+    "physics": "key"
     -
-    "physics": ["example1", "example2"]
+    "physics": ["key", "key"]
     -
     "physics": {
-        "example1": "relative/path/example.json", //"key": "url" (with file ext)
-        "example2": {
-            "url": "relative/path/example.json",
+        "key": "relative/path/name.json",
+        "key": {
+            "url": "relative/path/name.json",
             "format": 4
         },
-        "example3": {
-            "data": "relative/path/example.png"
+        "key": {
+            "data": "stringified json"
         },
-        "example4": {
+        "key": {
             "data": {
-                // json data obj
+                //data obj
             }
         }
     }
@@ -337,15 +358,12 @@ Same as atlasJSONArray
      * @param {object} [callbackContext = null]
      */
     --
-    "script": "example"
+    "script": "key"
     -
-    "script": ["example1", "example2"]
+    "script": ["key", "key"]
     -
     "script": {
-        "example1": "relative/path/example.json", //"key": "url" (with file ext)
-        "example2": {
-            "url": "relative/path/example.json",
-        }
+        "key": "relative/path/name.js",
     }
 
 #### [shader(key, url, overwrite)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#shader)
@@ -355,14 +373,14 @@ Same as atlasJSONArray
      * @param {string} [overwrite = false]
      */
      --
-     "shader": "example"
+     "shader": "key"
      -
-     "shader": ["example1", "example2"]
+     "shader": ["key", "key"]
      -
      "shader": {
-         "example1": "relative/path/example.frag", //"key": "url" (with file ext)
-         "example2": {
-             "url": "relative/path/example.frag",
+         "key": "relative/path/name.frag",
+         "key": {
+             "url": "relative/path/name.frag",
              "overwrite": true
          }
      }
@@ -379,11 +397,18 @@ Same as atlasJSONArray
      */
     --
     "spritesheet": {
-        "example": {
-            "url": "relative/path/example.png",
+        "key": {
+            "url": "relative/path/name.png",
+            "frameWidth": 70,
+            "frameHeight": 70
+        },
+        "key": {
+            "url": "relative/path/name.png",
             "frameWidth": 70,
             "frameHeight": 70,
-            "margin": 10
+            "frameMax": -1,
+            "margin": 10,
+            "spacing": 0
         }
     }
      
@@ -394,14 +419,14 @@ Same as atlasJSONArray
      * @param {boolean} [overwrite = false]
      */
     --
-    "text": "example"
+    "text": "key"
     -
-    "text": ["example1", "example2"]
+    "text": ["key", "key"]
     -
     "text": {
-        "example1": "relative/path/example.txt", //"key": "url" (with file ext)
-        "example2": {
-            "url": "relative/path/example.txt",
+        "key": "relative/path/name.txt",
+        "key": {
+            "url": "relative/path/name.txt",
             "overwrite": true
         }
     }
@@ -414,22 +439,22 @@ Same as atlasJSONArray
      * @param {number} [format = 0]
      */
     --
-    "tilemap": "example"
+    "tilemap": "key"
     -
-    "tilemap": ["example1", "example2"]
+    "tilemap": ["key", "key"]
     -
     "tilemap": {
-        "example1": "relative/path/example.json", //"key": "url" (with file ext)
-        "example2": {
-            "url": "relative/path/example.json",
+        "key": "relative/path/name.json",
+        "key": {
+            "url": "relative/path/name.json",
             "format": 1
         },
-        "example3": {
-            "data": "relative/path/example.png"
+        "key": {
+            "data": "stringified json"
         },
-        "example4": {
+        "key": {
             "data": {
-                // json data obj
+                //data obj
             }
         }
     }
@@ -447,20 +472,20 @@ Same as atlasJSONArray
      */
      --
     "video": {
-        "example1": "relative/path/example.mp3",
-        "example2": ["relative/path/example.mp3", "relative/path/example.wav"],
-        "example3": [{}, {}],
-        "example4": {
-            "urls": "relative/path/example.mp3",
+        "key": "relative/path/name.mp3",
+        "key": ["relative/path/name.mp3", "relative/path/name.wav"],
+        "key": [{}, {}],
+        "key": {
+            "urls": "relative/path/name.mp3",
             "loadEvent": "loadeddata"
         },
-        "example5": {
-            "urls": ["relative/path/example.mp3", "relative/path/example.wav"],
+        "key": {
+            "urls": ["relative/path/name.mp3", "relative/path/name.wav"],
             "asBlob": true
         },
-        "example6": {
-            "urls": [{}, {}]
-            "loadEvent": "canplay"
+        "key": {
+            "urls": [{}, {}],
+            "loadEvent": "canplay",
             "asBlob": true
         }
     }
@@ -477,14 +502,14 @@ Same as atlasJSONArray
      * @param {boolean} [overwrite = false]
      */
     --
-    "xml": "example"
+    "xml": "key"
     -
-    "xml": ["example1", "example2"]
+    "xml": ["key", "key"]
     -
     "xml": {
-        "example1": "relative/path/example.xml", //"key": "url" (with file ext)
-        "example2": {
-            "url": "relative/path/example.xml",
+        "key": "relative/path/name.xml",
+        "key": {
+            "url": "relative/path/name.xml",
             "overwrite": true
         }
     }

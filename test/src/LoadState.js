@@ -9,7 +9,12 @@ import AssetLoader from "../lib/AssetLoader";
 class LoadState extends Phaser.State {
 
     preload() {
-        new AssetLoader(this.game, this.game.cache.getJSON(AssetKeys.ASSETS_JSON.key));
+        let preloadbar = this.game.add.sprite(0, 0, AssetKeys.PRELOAD_SPRITE);
+        preloadbar.x = (this.game.width - preloadbar.width) / 2;
+        preloadbar.y = (this.game.height - preloadbar.height) / 2;
+        this.game.load.setPreloadSprite(preloadbar);
+
+        new AssetLoader(this.game, this.game.cache.getJSON(AssetKeys.ASSETS));
 
         this._loadingMsg = "Loading... ";
         this._text = this.game.add.text(0, 0, this._loadingMsg, {fill: "#ffffff"});
@@ -34,12 +39,12 @@ class LoadState extends Phaser.State {
             this._text.text = "Loaded";
         }
 
-        if (success && cacheKey === AssetKeys.PRELOAD_SPRITE) {
-            let preloadbar = this.game.add.sprite(0, 0, AssetKeys.PRELOAD_SPRITE);
-            preloadbar.x = (this.game.width - preloadbar.width) / 2;
-            preloadbar.y = (this.game.height - preloadbar.height) / 2;
-            this.game.load.setPreloadSprite(preloadbar);
-        }
+        // if (success && cacheKey === AssetKeys.PRELOAD_SPRITE) {
+        //     let preloadbar = this.game.add.sprite(0, 0, AssetKeys.PRELOAD_SPRITE);
+        //     preloadbar.x = (this.game.width - preloadbar.width) / 2;
+        //     preloadbar.y = (this.game.height - preloadbar.height) / 2;
+        //     this.game.load.setPreloadSprite(preloadbar);
+        // }
     }
 
     onLoadComplete() {

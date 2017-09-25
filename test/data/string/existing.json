@@ -1,0 +1,26 @@
+{
+  "path": "assets/",
+  "atlas": "atlasTest",
+  "atlasJSONArray": "atlasJSONArrayTest",
+  "atlasJSONHash": "atlasJSONHashTest",
+  "atlasXML": "atlasXMLTest",
+  "binary": "binaryTest",
+  "bitmapFont": "bitmapFontTest",
+  "image": "imageTest",
+  "json": "jsonTest",
+  "physics": "physicsTest",
+  "script": "ScriptTest",
+  "shader": "shaderTest",
+  "text": "textTest",
+  "tilemap": "tilemapTest",
+  "xml": "xmlTest",
+
+  "spritesheet": {
+    "spritesheetTest": {
+      "url": "assets/spritesheetTest.png",
+      "frameWidth": 70,
+      "frameHeight": 70,
+      "margin": 0
+    }
+  }
+}

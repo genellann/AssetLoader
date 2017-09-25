@@ -1,0 +1,97 @@
+{
+  "atlas": {
+    "key": {
+      "textureURL": "relative/path/name.png",
+      "atlasURL": "relative/path/name.json",
+      "format": 1
+    }
+  },
+  "atlasJSONArray": {
+    "key": {
+      "textureURL": "relative/path/name.png",
+      "atlasURL": "relative/path/name.json"
+    }
+  },
+  "atlasJSONHash": {
+    "key": {
+      "textureURL": "relative/path/name.png",
+      "atlasURL": "relative/path/name.json"
+    }
+  },
+  "atlasXML": {
+    "key": {
+      "textureURL": "relative/path/name.png",
+      "atlasURL": "relative/path/name.xml"
+    }
+  },
+  "audio": {
+    "key": "relative/path/name.mp3"
+  },
+  "audioSprite": {
+    "key": {
+      "urls": "relative/path/name.mp3",
+      "jsonURL": "relative/path/name.json"
+    }
+  },
+  "binary": {
+    "key": "relative/path/name.bin"
+  },
+  "bitmapFont": {
+    "key": {
+      "textureURL": "relative/path/name.png",
+      "atlasURL": "relative/path/name.xml",
+      "xSpacing": 0,
+      "ySpacing": 0
+    }
+  },
+  "image": {
+    "key": "relative/path/name.png"
+  },
+  "images": {
+    "keys": ["key1", "key2"],
+    "urls": ["relative/path/name1.png", "relative/path/name2.jpeg"]
+  },
+  "json": {
+    "key": "relative/path/name.json"
+  },
+  "pack": {
+    "key": "relative/path/name.json"
+  },
+  "physics": {
+    "key": {
+      "url": "relative/path/name.json",
+      "format": 3
+    }
+  },
+  "script": {
+    "key": "relative/path/name.js"
+  },
+  "shader": {
+    "key": "relative/path/name.frag"
+  },
+  "spritesheet": {
+    "key": {
+      "url": "relative/path/name.png",
+      "frameWidth": 70,
+      "frameHeight": 70,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  },
+  "text": {
+    "key": "relative/path/name.txt"
+  },
+  "tilemap": {
+    "key": {
+      "url": "relative/path/name.json",
+      "format": 0
+    }
+  },
+  "video": {
+    "key": "relative/path/name.mp4"
+  },
+  "xml": {
+    "key": "relative/path/name.xml"
+  }
+}
