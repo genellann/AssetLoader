@@ -523,6 +523,10 @@ Ask for people to put in issues/pr's
 
 Tell how to set json path, build, and open index.html
 
+Need to run npm install & grunt task then open index
+
+## See my other libs
+
 ## Credits
 This project used the [webpack-library-starter](https://github.com/krasimir/webpack-library-starter) project
 

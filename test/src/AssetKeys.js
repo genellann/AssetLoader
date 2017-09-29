@@ -1,5 +1,7 @@
 /**
- * Created by gradley on 12/25/2016.
+ * Created by Genell Radley in 2017.
+ *
+ * https://github.com/gradley/PhaserAssetLoader
  */
 
 /**

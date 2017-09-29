@@ -1,5 +1,7 @@
 /**
- * Created by Genell Radley on 12/1/16.
+ * Created by Genell Radley in 2017.
+ *
+ * https://github.com/gradley/PhaserAssetLoader
  */
 
 "use strict";

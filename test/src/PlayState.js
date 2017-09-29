@@ -1,5 +1,7 @@
 /**
- * Created by Genell Radley on 12/2/16.
+ * Created by Genell Radley in 2017.
+ *
+ * https://github.com/gradley/PhaserAssetLoader
  */
 
 import AssetKeys from "./AssetKeys";
