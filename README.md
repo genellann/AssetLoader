@@ -118,7 +118,7 @@ Please see [template.json](/test/data/template.json) for the most common (and re
     
 #### [crossOrigin](http://phaser.io/docs/2.6.2/Phaser.Loader.html#crossOrigin) {string | boolean}
     "crossOrigin": "anonymous"
-    --
+---
     "crossOrigin": true
 
 #### [enableParallel](http://phaser.io/docs/2.6.2/Phaser.Loader.html#enableParallel) {boolean}
@@ -245,17 +245,20 @@ Please see [template.json](/test/data/template.json) for the most common (and re
         }
     }
 #### [binary(key, url, callback, callbackContext)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#binary)
+Note: we cannot pass in a callback from a json. You will want to load your binary manually in the source code if you wish to pass a callback.
+
+---
     /**
      * @param {string} key
      * @param {string} [url = <key>.bin]
-     * @param {function} [callback = null] // NOTE: we cannot pass in a callback from a json
+     * @param {function} [callback = null]  
      * @param {function} [callbackContext = null]
      */
-    --
+---
     "binary": "key"
-    -
+---
     "binary": ["key", "key"]
-    -
+---
     "binary": {
         "key": "relative/path/name.bin"
     }
@@ -269,25 +272,20 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {number} [xSpacing = 0]
      * @param {number} [ySpacing = 0]
      */
-    --
+---
     "bitmapFont": "key"
-    -
+---
     "bitmapFont": ["key", "key"]
-    -
+---
     "bitmapFont": {
-        "irrelevant": "key",
-        "irrelevant": ["key", "key"],
         "key": {
             "textureURL": "relative/path/name.png",
             "atlasURL": "relative/path/name.xml",
+            "atlasData": { 
+                // If you give a "atlasData" object, "atlasURL" will be ignored. It's either/or. 
+            }
             "xSpacing": 10,
             "ySpacing": 5
-        },
-        "key": {
-            "textureURL": "relative/path/name.png",
-            "atlasData": { 
-               //data obj
-            }
         }
     }
      
@@ -297,11 +295,11 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {string} [url = <key>.png]
      * @param {boolean} [overwrite = false]
      */
-    --
+---
     "image": "key"
-    -
+---
     "image": ["key", "key"]
-    -
+---
     "image": {
         "key": "relative/path/name.png",
         "key": {
@@ -315,9 +313,9 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {Array} keys
      * @param {Array} [urls = Array.<string>] // The strings in the array will default to <key>.png
      */
-    --
+---
     "images": ["key", "key"]
-    -
+---
     "images": {
         "keys": ["key", "key"],
         "urls": ["relative/path/name.png", "relative/path/name.jpeg"]
@@ -329,11 +327,11 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {string} [url = <key>.json]
      * @param {boolean} [overwrite = false]
      */
-    --
+---
     "json": "key"
-    -
+---
     "json": ["key", "key"]
-    -
+---
     "json": {
         "key": "relative/path/name.json",
         "key": {
@@ -343,13 +341,16 @@ Please see [template.json](/test/data/template.json) for the most common (and re
     }
      
 #### [pack(key, url, data, callbackContext)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#pack)
+Note: we cannot pass in a callback from a json. You will want to load your binary manually in the source code if you wish to pass a callback.
+
+---
     /**
       * @param {string} key
       * @param {string} [url = null] //Must pass either url or data param
       * @param {object} [data = null] //Must pass either url or data param
       * @param {loader} [callbackContext = null] //If you need to pass a context, you won't be able to do it from an external json, load it from within the code base.
       */
-    --
+---
     "pack": {
         "key": "relative/path/name.json",
         "key": {
@@ -364,43 +365,42 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {object | string} [data = null]
      * @param {string} [format = 3]
      */
-    --
+---
     "physics": "key"
-    -
+---
     "physics": ["key", "key"]
-    -
+---
     "physics": {
         "key": "relative/path/name.json",
         "key": {
             "url": "relative/path/name.json",
-            "format": 4
-        },
-        "key": {
-            "data": "stringified json"
-        },
-        "key": {
             "data": {
-                //data obj
-            }
+                // "data" can either be an object or a strinified json
+                // If you give a "data" object, "url" will be ignored. It's either/or. 
+            },
+            "format": 4
         }
     }
-    --
+---
     FORMATS:
     Phaser.Loader.PHYSICS_LIME_CORONA_JSON = 3;
     Phaser.Loader.PHYSICS_PHASER_JSON = 4;
     
 #### [script(key, url, callback, callbackContext)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#script)
+Note: we cannot pass in a callback from a json. You will want to load your binary manually in the source code if you wish to pass a callback.
+
+---
     /**
      * @param {string} key
      * @param {string} [url = <key>.js]
      * @param {function} [callback = null] //Cannot pass callbacks from json
      * @param {object} [callbackContext = null]
      */
-    --
+---
     "script": "key"
-    -
+---
     "script": ["key", "key"]
-    -
+---
     "script": {
         "key": "relative/path/name.js",
     }
@@ -411,11 +411,11 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {string} [url = <key>.frag]
      * @param {string} [overwrite = false]
      */
-     --
+ ---
      "shader": "key"
-     -
+ ---
      "shader": ["key", "key"]
-     -
+ ---
      "shader": {
          "key": "relative/path/name.frag",
          "key": {
@@ -434,13 +434,8 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {number} [margin = 0]
      * @param {number} [spacing = 0]
      */
-    --
+---
     "spritesheet": {
-        "key": {
-            "url": "relative/path/name.png",
-            "frameWidth": 70,
-            "frameHeight": 70
-        },
         "key": {
             "url": "relative/path/name.png",
             "frameWidth": 70,
@@ -457,11 +452,11 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {string} [url = <key>.txt]
      * @param {boolean} [overwrite = false]
      */
-    --
+---
     "text": "key"
-    -
+---
     "text": ["key", "key"]
-    -
+---
     "text": {
         "key": "relative/path/name.txt",
         "key": {
@@ -477,27 +472,23 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {object | string} [data = null]
      * @param {number} [format = 0]
      */
-    --
+---
     "tilemap": "key"
-    -
+---
     "tilemap": ["key", "key"]
-    -
+---
     "tilemap": {
         "key": "relative/path/name.json",
         "key": {
             "url": "relative/path/name.json",
-            "format": 1
-        },
-        "key": {
-            "data": "stringified json"
-        },
-        "key": {
             "data": {
-                //data obj
-            }
+                // "data" can either be an object or a strinified json
+                // If you give a "data" object, "url" will be ignored. It's either/or. 
+            },
+            "format": 1
         }
     }
-    --     
+---     
     FORMATS:
     Phaser.Tilemap.CSV = 0;
     Phaser.Tilemap.TILED_JSON = 1;
@@ -509,26 +500,18 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {string} [loadEvent = "canplaythrough"]
      * @param {boolean} [asBlob = false]
      */
-     --
+ ---
     "video": {
         "key": "relative/path/name.mp3",
         "key": ["relative/path/name.mp3", "relative/path/name.wav"],
         "key": [{}, {}],
         "key": {
-            "urls": "relative/path/name.mp3",
-            "loadEvent": "loadeddata"
-        },
-        "key": {
-            "urls": ["relative/path/name.mp3", "relative/path/name.wav"],
-            "asBlob": true
-        },
-        "key": {
-            "urls": [{}, {}],
-            "loadEvent": "canplay",
+            "urls": "relative/path/name.mp3",   // {string | Array.<string> | Array.<object>}
+            "loadEvent": "loadeddata",
             "asBlob": true
         }
     }
-    --     
+---     
     LOAD EVENTS:
         "canplaythrough"
         "canplay"
@@ -540,11 +523,11 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {string} [url = <key>.xml]
      * @param {boolean} [overwrite = false]
      */
-    --
+---
     "xml": "key"
-    -
+---
     "xml": ["key", "key"]
-    -
+---
     "xml": {
         "key": "relative/path/name.xml",
         "key": {
@@ -556,13 +539,19 @@ Please see [template.json](/test/data/template.json) for the most common (and re
 ## UNIT TESTS
 In order to test the AssetLoader, I made a simple Phaser game...
 
-The tests are [here](/test).
+### How to run the tests
+1. Run npm install
+- From the command line, navigate to the test root ([test/](/test))
+- Type: _npm install_
+- Wait while the modules download. Watch the console output for errors. Address them if any.
+2. Run grunt task
+- Once your node modules are downloaded, type _grunt_ into you command line
+- Wait until you get a confirmation build message
+3. Open index.html in the browser
+4. Open the inspector or dev tools in your browser 
+- You will see console output detailing which tests have run and if they passed or failed
 
-Ask for people to put in issues/pr's
-
-Tell how to set json path, build, and open index.html
-
-Need to run npm install & grunt task then open index
+Please open an [issue](https://github.com/genradley/AssetLoader/issues) if you find any bugs. We will fix the issue and add a test for it.
 
 ## JSDOCS
 Please download or clone the repo and open [/main/docs/index.html](/main/docs/index.html) in a web browser
@@ -571,7 +560,7 @@ Please download or clone the repo and open [/main/docs/index.html](/main/docs/in
 
 [Align](https://github.com/genradley/Align) - A library for aligning display objects in relation to one another.
 
-[PhaserSignals](https://github.com/genradley/PhaserSignals) - Add **_any_** listener to **_any_** signal. Dispatch **_any_** signal **_anywhere/anytime_**.
+[Signals](https://github.com/genradley/Signals) - A library for Phaser. Add **_any_** listener to **_any_** signal. Dispatch **_any_** signal **_anywhere/anytime_**.
 
 More coming soon...
 
