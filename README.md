@@ -8,7 +8,7 @@ The Phaser AssetLoader library was written with Phaser version 2.6.2.
 There are 3 steps to using the AssetLoader:
 1. List the keys and paths to your assets in a json file.
 
-
+---
     assets.json = {
         "image": {
             "example": "example.png"
@@ -17,7 +17,7 @@ There are 3 steps to using the AssetLoader:
 
 2. Load the json into your game.
 
-    
+---
     class BootState extends Phaser.State {
     
         preload() {
@@ -31,7 +31,7 @@ There are 3 steps to using the AssetLoader:
 
 3. Pass the json into an AssetLoader instance and allow it to load the rest of your assets automatically.
 
-    
+---
     class LoadState extends Phaser.State {
     
         preload() {
@@ -58,7 +58,7 @@ There are some load methods that allow callbacks and callback contexts to be pas
 If you are using a preload sprite, an image that will show during the loading period of your game, you can either:
 1. Load it outside of the AssetLoader at the same time you load your json for the AssetLoader.
 
-
+---
     class BootState extends Phaser.State {
     
         preload() {
@@ -84,7 +84,7 @@ If you are using a preload sprite, an image that will show during the loading pe
 
 2. List it first in your json file, listen for when it is loaded, then add it to the stage. 
 
-    
+---
     class LoadState extends Phaser.State {
 
     preload() {
@@ -148,7 +148,7 @@ Please see [template.json](/test/data/template.json) for the most common (and re
             "textureURL": "relative/path/name.png",
             "atlasURL": "relative/path/name.json",
             "atlasData": {
-                // You can put the json object here directly. If you do, "atlasURL" will be ignored. It's either/or. 
+                // If you give an "atlasData" object, "atlasURL" will be ignored. It's either/or. 
             },
             "format": 1
         }
@@ -166,30 +166,23 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      * @param {string} [atlasURL = <key>.json]
      * @param {object} [atlasData = null]
      */
-
-Possible Structures:
-
+---
     "atlasJSONArray": "key"
 ---
     "atlasJSONArray": ["key", "key"]
 ---
     "atlasJSONArray": {
-        "irrelevant": "key",
-        "irrelevant": ["key", "key"],
         "key": {
             "textureURL": "relative/path/name.png",
-            "atlasURL": "relative/path/name.json"
-        },
-        "key": {
-            "textureURL": "relative/path/name.png",
+            "atlasURL": "relative/path/name.json",
             "atlasData": { 
-               //data obj
+                // If you give an "atlasData" object, "atlasURL" will be ignored. It's either/or. 
             }
         }
     }
      
 #### [atlasJSONHash(key, textureURL, atlasURL, atlasData)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#atlasJSONHash)
-Same as atlasJSONArray
+    Same as atlasJSONArray
 
 #### [atlasXML(key, textureURL, atlasURL, atlasData)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#atlasXML)
     /**
@@ -198,22 +191,17 @@ Same as atlasJSONArray
      * @param {string} [atlasURL = <key>.xml]
      * @param {object} [atlasData = null]
      */
-    --
+---
     "atlasXML": "key"
-    -
+---
     "atlasXML": ["key", "key"]
-    -
+---
     "atlasXML": {
-        "irrelevant": "key",
-        "irrelevant": ["key", "key"],
         "key": {
             "textureURL": "relative/path/name.png",
-            "atlasURL": "relative/path/name.xml"
-        },
-        "key": {
-            "textureURL": "relative/path/name.png",
+            "atlasURL": "relative/path/name.xml",
             "atlasData": { 
-               //data obj
+                // If you give an "atlasData" object, "atlasURL" will be ignored. It's either/or. 
             }
         }
     }
@@ -224,16 +212,14 @@ Same as atlasJSONArray
      * @param {string | Array.<string> | Array.<object>} urls
      * @param {boolean} [autoDecode = true]
      */
-     --
+---
     "audio": {
         "key": "relative/path/name.mp3",
         "key": ["relative/path/name.mp3", "relative/path/name.wav"],
+        "key": [{}, {}],
         "key": {
-            "urls": "relative/path/name.mp3",
+            "urls": "relative/path/name.mp3",   // {string | Array.<string> | Array.<object>}
             "autoDecode": false
-        },
-        "key": {
-            "urls": ["relative/path/name.mp3", "relative/path/name.wav"]
         }
     }
          
@@ -245,21 +231,17 @@ Same as atlasJSONArray
      * @param {string | object} [jsonData = null]
      * @param {boolean} [autoDecode = true]
      */
-    --
+---
     "audioSprite": {
         "key": "relative/path/name.mp3",
         "key": ["relative/path/name.mp3", "relative/path/name.wav"],
         "key": {
-            "urls": "relative/path/name.mp3",
+            "urls": "relative/path/name.mp3",   // {Array | string}
             "jsonURL": "relative/path/name.json,
-            "autoDecode": false
-        },
-        "key": {
-            "urls": ["relative/path/name.mp3", "relative/path/name.wav"],
             "jsonData": {
-                //data obj
+                // If you give a "jsonData" object, "jsonURL" will be ignored. It's either/or. 
             },
-            "autoDecode": true
+            "autoDecode": false
         }
     }
 #### [binary(key, url, callback, callbackContext)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#binary)
