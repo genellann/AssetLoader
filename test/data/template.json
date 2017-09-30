@@ -1,4 +1,9 @@
 {
+  "baseURL": "absolute/path",
+  "crossOrigin": "string | boolean",
+  "enableParallel": true,
+  "path": "relative/path",
+  "resetLocked": false,
   "atlas": {
     "key": {
       "textureURL": "relative/path/name.png",

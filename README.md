@@ -1,20 +1,22 @@
 # Phaser Asset Loader
 
-Tell where to get min and how to include in project
+The min.js is in the [/main/dist](/main/dist) directory. 
 
-phaser version
+The Phaser AssetLoader library was written with Phaser version 2.6.2.
 
-Explain that some things have to be loaded within the src code (callbacks)
+## CODE  
+There are 3 steps to using the AssetLoader:
+1. List the keys and paths to your assets in a json file.
 
-Preload sprite convo
-
-## Code   
 
     assets.json = {
         "image": {
             "example": "example.png"
         }
     }
+
+2. Load the json into your game.
+
     
     class BootState extends Phaser.State {
     
@@ -26,7 +28,9 @@ Preload sprite convo
             this.game.state.start("load");
         }
     }
-    
+
+3. Pass the json into an AssetLoader instance and allow it to load the rest of your assets automatically.
+
     
     class LoadState extends Phaser.State {
     
@@ -43,10 +47,71 @@ Preload sprite convo
         }
     }
 
-## JSON
-fields in **bold** mean you must include either/or
+#### Example
+Please see the [test](/test) project for a real life example.
 
-fields in _italics_ mean optional. If you exclude the field, it will default to something
+#### Exceptions
+##### Callbacks
+There are some load methods that allow callbacks and callback contexts to be passed (binary, pack, script). There isn't a way to pass functions into the AssetLoader from a json. You will want to load binaries, packs, and scripts manually from inside your source code if you would like to pass callbacks to them. If you do not need to pass callbacks to these, you can set them up and load them with the AssetLoader from a json.
+
+##### Preload Sprite
+If you are using a preload sprite, an image that will show during the loading period of your game, you can either:
+1. Load it outside of the AssetLoader at the same time you load your json for the AssetLoader.
+
+
+    class BootState extends Phaser.State {
+    
+        preload() {
+            this.game.load.json("assets", "assets.json");
+         
+            this.game.load.image("preloadSprite", "preloadSprite.png");
+        }
+    
+        create() {
+            this.game.state.start("load");
+        }
+    }
+
+    class LoadState extends Phaser.State {
+    
+        preload() {
+            let loadingBar = this.game.add.sprite(0, 0, "preloadSprite);
+            this.game.load.setPreloadSprite(loadingBar);
+            
+            new AssetLoader(this.game, this.game.cache.getJSON("assets"));
+        }
+    }
+
+2. List it first in your json file, listen for when it is loaded, then add it to the stage. 
+
+    
+    class LoadState extends Phaser.State {
+
+    preload() {
+        this.game.load.onFileComplete.add(this.onFileLoaded, this);
+
+        new AssetLoader(this.game, this.game.cache.getJSON(AssetKeys.ASSETS));
+    }
+
+    onFileLoaded(progress, cacheKey, success, totalLoaded, totalFiles) {
+        if (success && cacheKey === "preloadSprite") {
+             let loadingBar = this.game.add.sprite(0, 0, "preloadSprite");
+             this.game.load.setPreloadSprite(loadingBar);
+        }
+    }
+
+## JSON STRUCTURE
+It is important that your json is structured properly. Below are all the Loader functions that come with Phaser. 
+ 
+The function names are linked to the [Phaser.Loader](http://phaser.io/docs/2.6.2/Phaser.Loader) doc. I have also listed the params in jsdoc notation so you can see information about the params like data type, whether it's required, and default values.
+ 
+There are examples of how you can structure your json for each Loader function. There are several ways per load function of how you can form your json object.
+
+Sometimes, there are Loader function params that are either/or. For example. If you pass an object for "atlasData" to the Loader.atlas(), "atlasURL" will be ignored. You are either passing the path ("atlasURL") or the json object directly ("atlasData"). You must pass one or the other even though they both have default values.
+
+Sometimes, there are Loader function params that are optional. The have a default value. You do not need to include a value for these params in the json if you would like to use the default value.
+
+Please see [template.json](/test/data/template.json) for the most common (and recommended) structures. This will be the easiest starting point for you when creating your json file.
 
 #### [baseURL](http://phaser.io/docs/2.6.2/Phaser.Loader.html#baseURL) {string}
     "baseURL": "absolute/path"
@@ -63,7 +128,7 @@ fields in _italics_ mean optional. If you exclude the field, it will default to 
     "path": "relative/path"
 
 #### [resetLocked](http://phaser.io/docs/2.6.2/Phaser.Loader.html#resetLocked) {boolean}
-    "enableParallel": true //defaults to false
+    "resetLocked": true //defaults to false
 
 #### [atlas(key, textureURL, atlasURL, atlasData, format)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#atlas)
     /**
@@ -73,36 +138,26 @@ fields in _italics_ mean optional. If you exclude the field, it will default to 
      * @param {object} [atlasData = null]
      * @param {number} [format = 0]
      */
-    
-"atlas": "key"
-
-"atlas": ["key", "key"]
-
-"atlas": {
-    "key": {
-        "textureURL": "relative/path/name.png",
-        **"atlasURL"**: "relative/path/name.json",
-        **"atlasData"**: {
-            // You can put the json object here directly. If you do, "atlasURL" will be ignored. It's either/or. 
-        },
-        _"format"_: 1
-    }
-}
-
+---
+    "atlas": "key"
+---
+    "atlas": ["key", "key"]
+---
     "atlas": {
         "key": {
             "textureURL": "relative/path/name.png",
-            **"atlasURL"**: "relative/path/name.json",
-            **"atlasData"**: {
+            "atlasURL": "relative/path/name.json",
+            "atlasData": {
                 // You can put the json object here directly. If you do, "atlasURL" will be ignored. It's either/or. 
             },
-            _"format"_: 1
+            "format": 1
         }
     }
-FORMATS:
-Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY = 0; (default)
-Phaser.Loader.TEXTURE_ATLAS_JSON_HASH = 1;
-Phaser.Loader.TEXTURE_ATLAS_XML_STARLING = 2;
+---
+    FORMATS:
+    Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY = 0; (default)
+    Phaser.Loader.TEXTURE_ATLAS_JSON_HASH = 1;
+    Phaser.Loader.TEXTURE_ATLAS_XML_STARLING = 2;
     
 #### [atlasJSONArray(key, textureURL, atlasURL, atlasData)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#atlasJSONArray)
     /**
@@ -111,11 +166,13 @@ Phaser.Loader.TEXTURE_ATLAS_XML_STARLING = 2;
      * @param {string} [atlasURL = <key>.json]
      * @param {object} [atlasData = null]
      */
-    --
+
+Possible Structures:
+
     "atlasJSONArray": "key"
-    -
+---
     "atlasJSONArray": ["key", "key"]
-    -
+---
     "atlasJSONArray": {
         "irrelevant": "key",
         "irrelevant": ["key", "key"],
@@ -514,7 +571,7 @@ Same as atlasJSONArray
         }
     }
 
-## Unit tests
+## UNIT TESTS
 In order to test the AssetLoader, I made a simple Phaser game...
 
 The tests are [here](/test).
@@ -525,11 +582,36 @@ Tell how to set json path, build, and open index.html
 
 Need to run npm install & grunt task then open index
 
-## See my other libs
+## JSDOCS
+Please download or clone the repo and open [/main/docs/index.html](/main/docs/index.html) in a web browser
 
-## Credits
+## MY OTHER GITHUB PROJECTS
+
+[Align](https://github.com/genradley/Align) - A library for aligning display objects in relation to one another.
+
+[PhaserSignals](https://github.com/genradley/PhaserSignals) - Add **_any_** listener to **_any_** signal. Dispatch **_any_** signal **_anywhere/anytime_**.
+
+More coming soon...
+
+## CREDITS
 This project used the [webpack-library-starter](https://github.com/krasimir/webpack-library-starter) project
 
 Some of the test assets are from the Phaser game [Elemental One]()
 
 Some of the test assets are from [Phaser's example code]()
+
+## ABOUT ME
+My name is Genell Radley. I am a game developer w/7yr professional experience writing games in Flash, Unity and HTML5. I believe in unit testing and documenting my code well. I am very excited to share my code here with you on GitHub. I hope you will contribute. 
+
+Please see my [github profile](https://github.com/genradley) and [linkedin profile](https://www.linkedin.com/in/genellradley/). 
+
+--
+(ignore this line. it is for seo purposes)
+Genell Radley
+Genell Radley
+Genell Radley
+Genell Radley
+Genell Radley
+Genell Radley
+Genell Radley
+Genell Radley
