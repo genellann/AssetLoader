@@ -536,8 +536,47 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
         }
     }
 
+## RECOMMENDATIONS
+Please use constants for your keys.
+
+Constants have great benefits, including but not limited to:
+- They protect your code from typos. 
+- They keep things organized. 
+- They make changing the key easier because you only have to change it in one place.
+
+You can add consts at the bottom of any class with Object.defineProperties(). Consts are ALL-CAPS by convention.
+
+I often make an empty class just to use as a holder for my consts. This is called an enum.
+   
+    assets.json = {
+        "image": {
+            "background": "path/bg.png",
+            "playBtn": "path/play.jpg"
+        }
+    }
+    ---
+    class AssetKeys {
+    }
+    Object.defineProperties(AssetKeys, {
+        "BACKGROUND": {
+            value: "background"
+        },
+        "PLAY_BUTTON": {
+            value: "playBtn"
+        }
+    }
+    ---
+    import AssetKeys from "./AssetKeys"
+    
+    class SomeClass {
+        
+        someFunc() {
+            this.game.add.sprite(0, 0, AssetKeys.BACKGROUND);
+        }
+    }
+
 ## UNIT TESTS
-In order to test the AssetLoader, I made a simple Phaser game...
+In order to test the AssetLoader, I made a simple Phaser game that loads assets and puts them on the stage. There are several json files that I run the game with in order to test the various json structures available.
 
 ### How to run the tests
 1. Run npm install
@@ -549,7 +588,7 @@ In order to test the AssetLoader, I made a simple Phaser game...
 - Wait until you get a confirmation build message
 3. Open index.html in the browser
 4. Open the inspector or dev tools in your browser 
-- You will see console output detailing which tests have run and if they passed or failed
+- You will see assets on the stage and console output indicating that the tests passed.
 
 Please open an [issue](https://github.com/genradley/AssetLoader/issues) if you find any bugs. We will fix the issue and add a test for it.
 
