@@ -17,8 +17,8 @@ class PlayState extends Phaser.State {
             case GameKeys.TEST_ARRAY_EXISTING:
                 this.testArray();
                 break;
-            case GameKeys.TEST_OBJECT_EXISTING:
-                this.testObject();
+            case GameKeys.TEST_OBJECT_ATLAS:
+                this.testAtlas();
                 break;
         }
     }
@@ -27,7 +27,7 @@ class PlayState extends Phaser.State {
 
         // -------- atlas -------- //
 
-        this.game.add.sprite(0, 200, AssetKeys.ATLAS, "p1_hurt");
+        this.game.add.sprite(0, 200, AssetKeys.ATLAS_0, "p1_hurt");
 
         // -------- atlasJSONArray -------- //
 
@@ -108,9 +108,9 @@ class PlayState extends Phaser.State {
     testArray() {
         // -------- atlas -------- //
 
-        this.game.add.sprite(0, 200, AssetKeys.ATLAS, "p1_hurt");
+        this.game.add.sprite(0, 200, AssetKeys.ATLAS_0, "p1_hurt");
 
-        this.game.add.sprite(20, 220, AssetKeys.ATLAS1, "p1_hurt");
+        this.game.add.sprite(20, 220, AssetKeys.ATLAS_1, "p1_hurt");
 
         // -------- atlasJSONArray -------- //
 
@@ -239,21 +239,21 @@ class PlayState extends Phaser.State {
         this.game.add.text(120, 180, xml.firstElementChild.firstElementChild.innerHTML, {fill: "#ffffff"});
     }
 
-    testObject() {
-
-        // -------- atlas -------- //
-
-        this.game.add.sprite(0, 200, AssetKeys.ATLAS, "p1_hurt");
-        this.game.add.sprite(20, 220, AssetKeys.ATLAS1, "p1_hurt");
-        this.game.add.sprite(40, 240, AssetKeys.ATLAS2, "p1_hurt");
-        let test = this.game.add.sprite(60, 260, AssetKeys.ATLAS3, "p1_hurt");
+    testAtlas(){
+        this.game.add.sprite(0, 200, AssetKeys.ATLAS_0, "p1_hurt");
+        this.game.add.sprite(20, 220, AssetKeys.ATLAS_1, "p1_hurt");
+        this.game.add.sprite(40, 240, AssetKeys.ATLAS_2, "p1_hurt");
+        let test = this.game.add.sprite(60, 260, AssetKeys.ATLAS_3, "p1_hurt");
         if (test.data.test !== "test") {
-            console.log("test failed for " + AssetKeys.ATLAS3);
+            console.log("test failed for " + AssetKeys.ATLAS_3);
         }
-        test = this.game.add.sprite(80, 280, AssetKeys.ATLAS4, "p1_hurt");
+        test = this.game.add.sprite(80, 280, AssetKeys.ATLAS_4, "p1_hurt");
         if (test.format !== 1) {
-            console.log("test failed for " + AssetKeys.ATLAS4);
+            console.log("test failed for " + AssetKeys.ATLAS_4);
         }
+    }
+
+    testObject() {
 
         // -------- atlasJSONArray -------- //
 

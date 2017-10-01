@@ -17,7 +17,7 @@
 
   "spritesheet": {
     "spritesheetTest": {
-      "url": "assets/spritesheetTest.png",
+      "url": "spritesheetTest.png",
       "frameWidth": 70,
       "frameHeight": 70,
       "margin": 0

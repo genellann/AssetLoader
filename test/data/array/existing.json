@@ -3,7 +3,7 @@
   "atlas": ["atlasTest", "atlasTest1"],
   "atlasJSONArray": ["atlasJSONArrayTest", "atlasJSONArrayTest1"],
   "atlasJSONHash": ["atlasJSONHashTest", "atlasJSONHashTest1"],
-  "atlasXML": ["atlasXML", "atlasXML1"],
+  "atlasXML": ["atlasXMLTest", "atlasXMLTest1"],
   "binary": ["binaryTest", "binaryTest1"],
   "bitmapFont": ["bitmapFontTest", "bitmapFontTest1"],
   "image": ["imageTest", "imageTest1"],
@@ -18,7 +18,7 @@
 
   "spritesheet": {
     "spritesheetTest": {
-      "url": "assets/spritesheetTest.png",
+      "url": "spritesheetTest.png",
       "frameWidth": 70,
       "frameHeight": 70,
       "margin": 0

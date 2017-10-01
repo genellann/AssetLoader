@@ -88,12 +88,12 @@ If you are using a preload sprite, an image that will show during the loading pe
     class LoadState extends Phaser.State {
 
     preload() {
-        this.game.load.onFileComplete.add(this.onFileLoaded, this);
+        this.game.load.onFileComplete.add(this.onFileComplete, this);
 
         new AssetLoader(this.game, this.game.cache.getJSON(AssetKeys.ASSETS));
     }
 
-    onFileLoaded(progress, cacheKey, success, totalLoaded, totalFiles) {
+    onFileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
         if (success && cacheKey === "preloadSprite") {
              let loadingBar = this.game.add.sprite(0, 0, "preloadSprite");
              this.game.load.setPreloadSprite(loadingBar);
@@ -151,7 +151,8 @@ Please see [template.json](/test/data/template.json) for the most common (and re
                 // If you give an "atlasData" object, "atlasURL" will be ignored. It's either/or. 
             },
             "format": 1
-        }
+        },
+        "key": {} //an empty object will load the image with all the defaults: (key, <key>.png, <key>.json, null, 0)
     }
 ---
     FORMATS:
@@ -233,8 +234,6 @@ Please see [template.json](/test/data/template.json) for the most common (and re
      */
 ---
     "audioSprite": {
-        "key": "relative/path/name.mp3",
-        "key": ["relative/path/name.mp3", "relative/path/name.wav"],
         "key": {
             "urls": "relative/path/name.mp3",   // {Array | string}
             "jsonURL": "relative/path/name.json,
@@ -261,6 +260,12 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
 ---
     "binary": {
         "key": "relative/path/name.bin"
+    }
+---
+    "binary: {
+        "key": {
+            "url": "relative/path/name.bin"
+        }
     }
      
 #### [bitmapFont(key, textureURL, atlasURL, atlasData, xSpacing, ySpacing)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#bitmapFont)
@@ -305,7 +310,8 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
         "key": {
             "url": "relative/path/name.jpeg",
             "overwrite": true
-        }
+        },
+        "key": {} //an empty object will load the image with all the defaults: (key, <key>.png, false)
     }
      
 #### [images(keys, urls)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#images)
@@ -338,6 +344,7 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
             "url": "relative/path/name.json",
             "overwrite": true
         }
+        "key": {} //an empty object will load the json with all the defaults: (key, <key>.json, false)
     }
      
 #### [pack(key, url, data, callbackContext)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#pack)
@@ -379,7 +386,8 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
                 // If you give a "data" object, "url" will be ignored. It's either/or. 
             },
             "format": 4
-        }
+        },
+        "key": {} //an empty object will load the physics with all the defaults: (key, <key>.json, null, 3)
     }
 ---
     FORMATS:
@@ -404,6 +412,12 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
     "script": {
         "key": "relative/path/name.js",
     }
+---
+    "script: {
+        "key": {
+            "url": "relative/path/name.js"
+        }
+    }
 
 #### [shader(key, url, overwrite)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#shader)
     /**
@@ -421,7 +435,8 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
          "key": {
              "url": "relative/path/name.frag",
              "overwrite": true
-         }
+         },
+         "key": {} //an empty object will load the shader with all the defaults: (key, <key>.frag, false)
      }
     
 #### [spritesheet(key, url, frameWidth, frameHeight, frameMax, margin, spacing)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#spritesheet)
@@ -462,7 +477,8 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
         "key": {
             "url": "relative/path/name.txt",
             "overwrite": true
-        }
+        },
+        "key": {} //an empty object will load the text with all the defaults: (key, <key>.txt, false)
     }
      
 #### [tilemap(key, url, data, format)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#tilemap)
@@ -486,7 +502,8 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
                 // If you give a "data" object, "url" will be ignored. It's either/or. 
             },
             "format": 1
-        }
+        },
+        "key": {} //an empty object will load the tilmap with all the defaults: (key, <key>.json, null, 0)
     }
 ---     
     FORMATS:
@@ -533,7 +550,8 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
         "key": {
             "url": "relative/path/name.xml",
             "overwrite": true
-        }
+        },
+        "key": {} //an empty object will load the xml with all the defaults: (key, <key>.xml, false)
     }
 
 ## RECOMMENDATIONS
@@ -576,7 +594,7 @@ I often make an empty class just to use as a holder for my consts. This is calle
     }
 
 ## UNIT TESTS
-In order to test the AssetLoader, I made a simple Phaser game that loads assets and puts them on the stage. There are several json files that I run the game with in order to test the various json structures available.
+In order to test the AssetLoader, I made a simple Phaser game that loads assets and puts them on the stage. There are several json files that I run the game with in order to test the various json structures available. I also ran the test in both Phaser.WEBGL and Phaser.CANVAS modes.
 
 ### How to run the tests
 1. Run npm install

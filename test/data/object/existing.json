@@ -1,85 +1,81 @@
 {
   "atlas": {
-    "atlasTest": "atlasTest",
-    "atlasTest1": ["atlasTest1", "atlasTest2"],
-    "atlasTest2": {
-      "textureURL": "assets/atlasTest3.png",
-      "atlasURL": "assets/atlasTest3.json"
+    "atlasTest": {
+      "textureURL": "assets/atlasTest.png",
+      "atlasURL": "assets/atlasTest.json"
     },
-    "atlasTest3": {
-      "textureURL": "assets/atlasTest4.png",
+    "atlasTest1": {
+      "textureURL": "assets/atlasTest1.png",
       "atlasData": {
         "test": "test"
       }
     },
-    "atlasTest4": {
-      "textureURL": "assets/atlasTest5.png",
-      "atlasURL": "assets/atlasTest5.json",
+    "atlasTest2": {
+      "textureURL": "assets/atlasTest2.png",
+      "atlasURL": "assets/atlasTest2.json",
       "format": 1
     }
   },
   "atlasJSONArray": {
-    "atlasJSONArrayTest1": "atlasJSONArrayTest",
-    "atlasJSONArrayTest2": ["atlasJSONArrayTest1", "atlasJSONArrayTest2"],
-    "atlasJSONArrayTest3": {
-      "textureURL": "assets/atlasJSONArrayTest3.png",
-      "atlasURL": "assets/atlasJSONArrayTest3.json"
+    "atlasJSONArrayTest": {
+      "textureURL": "assets/atlasJSONArrayTest.png",
+      "atlasURL": "assets/atlasJSONArrayTest.json"
     },
-    "atlasJSONArrayTest4": {
-      "textureURL": "assets/atlasJSONArrayTest4.png",
+    "atlasJSONArrayTest1": {
+      "textureURL": "assets/atlasJSONArrayTest1.png",
       "atlasData": {
         "test": "test"
       }
     }
   },
   "atlasJSONHash": {
-    "atlasJSONHashTest1": "atlasJSONHashTest",
-    "atlasJSONHashTest2": ["atlasJSONHashTest1", "atlasJSONHashTest2"],
-    "atlasJSONHashTest3": {
-      "textureURL": "assets/atlasJSONHashTest3.png",
-      "atlasURL": "assets/atlasJSONHashTest3.json"
+    "atlasJSONHashTest": {
+      "textureURL": "assets/atlasJSONHashTest.png",
+      "atlasURL": "assets/atlasJSONHashTest.json"
     },
-    "atlasJSONHashTest4": {
-      "textureURL": "assets/atlasJSONHashTest4.png",
+    "atlasJSONHashTest1": {
+      "textureURL": "assets/atlasJSONHashTest1.png",
       "atlasData": {
         "test": "test"
       }
     }
   },
   "atlasXML": {
-    "atlasXMLTest1": "atlasXMLTest",
-    "atlasXMLTest2": ["atlasXMLTest1", "atlasXMLTest2"],
-    "atlasXMLTest3": {
-      "textureURL": "assets/atlasXMLTest3.png",
-      "atlasURL": "assets/atlasXMLTest3.xml"
+    "atlasXMLTest": {
+      "textureURL": "assets/atlasXMLTest.png",
+      "atlasURL": "assets/atlasXMLTest.xml"
     },
-    "atlasXMLTest4": {
-      "textureURL": "assets/atlasXMLTest4.png",
+    "atlasXMLTest1": {
+      "textureURL": "assets/atlasXMLTest1.png",
       "atlasData": {
         "test": "test"
       }
     }
   },
   "audio": {
-    "audioTest1": "assets/audioTest.mp3",
-    "audioTest2": ["assets/audioTest1.mp3", "assets/audioTest1.wav"],
+    "audioTest": "assets/audioTest.mp3",
+    "audioTest1": ["assets/audioTest1.mp3", "assets/audioTest1.wav"],
+    "audioTest2": [{}, {}],
     "audioTest3": {
       "urls": "assets/audioTest2.mp3",
       "autoDecode": false
     },
     "audioTest4": {
       "urls": ["assets/audioTest3.mp3", "assets/audioTest3.wav"]
+    },
+    "audioTest5": {
+      "urls": [{}, {}]
     }
   },
   "audioSprite": {
-    "audioSpriteTest1": "assets/audioSpriteTest.ogg",
-    "audioSpriteTest2": ["assets/audioSpriteTest1.mp3", "assets/audioSpriteTest1.wav"],
-    "audioSpriteTest3": {
+    "audioSpriteTest": "assets/audioSpriteTest.ogg",
+    "audioSpriteTest1": ["assets/audioSpriteTest1.mp3", "assets/audioSpriteTest1.wav"],
+    "audioSpriteTest2": {
       "urls": "assets/audioSpriteTest2.mp3",
       "jsonURL": "assets/audioSpriteTest2.json",
       "autoDecode": false
     },
-    "audioSpriteTest4": {
+    "audioSpriteTest3": {
       "urls": ["assets/audioSpriteTest3.mp3", "assets/audioSpriteTest3.wav"],
       "jsonData": {
         "test": "test"

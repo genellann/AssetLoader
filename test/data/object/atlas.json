@@ -1,0 +1,48 @@
+{
+  "path": "assets/",
+  "atlas": {
+    "atlasTest": {},
+    "atlasTest1": {
+      "textureURL": "atlasTest1.png"
+    },
+    "atlasTest2": {
+      "atlasURL": "atlasTest2.json"
+    },
+    "atlasTest3": {
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasTest4": {
+      "format": 0
+    },
+    "atlasTest5": {
+      "textureURL": "atlasTest5.png",
+      "atlasURL": "atlasTest5.json"
+    },
+    "atlasTest6": {
+      "textureURL": "atlasTest_hash.png",
+      "atlasURL": "atlasTest_hash.json",
+      "format": 1
+    },
+    "atlasTest7": {
+      "textureURL": "atlasTest7.png",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasTest8": {
+      "textureURL": "atlasTest8.png",
+      "atlasData": {
+        "test": "test"
+      },
+      "format": 1
+    },
+    "atlasTest9": {
+      "atlasData": {
+        "test": "test"
+      },
+      "format": 0
+    }
+  }
+}

@@ -23,715 +23,937 @@ class AssetLoader {
     /**
      * Takes in properly formatted json for asset loading.
      * @param {Phaser.Game} game - A reference to the currently running game.
-     * @param {json} data - The loaded json. You will have to load the json for
+     * @param {json} json - The loaded json. You will have to load the json for
      *     this file manually but everything else can load from the
      *     AssetLoader.
      */
-    constructor(game, data) {
+    constructor(game, json) {
         this.game = game;
 
-        this.loadBaseURL(data.baseURL);
-        this.loadCrossOrigin(data.crossOrigin);
-        this.loadEnableParallel(data.enableParallel);
-        this.loadPath(data.path);
-        this.loadResetLocked(data.resetLocked);
-        this.loadAtlas(data.atlas);
-        this.loadAtlasJSONArray(data.atlasJSONArray);
-        this.loadAtlasJSONHash(data.atlasJSONHash);
-        this.loadAtlasXML(data.atlasXML);
-        this.loadAudio(data.audio);
-        this.loadAudioSprite(data.audioSprite);
-        this.loadBinary(data.binary);
-        this.loadBitmapFont(data.bitmapFont);
-        this.loadImage(data.image);
-        this.loadImages(data.images);
-        this.loadJSON(data.json);
-        this.loadPack(data.pack);
-        this.loadPhysics(data.physics);
-        this.loadScript(data.script);
-        this.loadShader(data.shader);
-        this.loadSpritesheet(data.spritesheet);
-        this.loadText(data.text);
-        this.loadTilemap(data.tilemap);
-        this.loadVideo(data.video);
-        this.loadXML(data.xml);
+        if (json.hasOwnProperty("baseURL")) this.loadBaseURL(json.baseURL);
+        if (json.hasOwnProperty("crossOrigin")) this.loadCrossOrigin(json.crossOrigin);
+        if (json.hasOwnProperty("enableParallel")) this.loadEnableParallel(json.enableParallel);
+        if (json.hasOwnProperty("path")) this.loadPath(json.path);
+        if (json.hasOwnProperty("resetLocked")) this.loadResetLocked(json.resetLocked);
+        if (json.hasOwnProperty("atlas")) this.loadAtlas(json.atlas);
+        if (json.hasOwnProperty("atlasJSONArray")) this.loadAtlasJSONArray(json.atlasJSONArray);
+        if (json.hasOwnProperty("atlasJSONHash")) this.loadAtlasJSONHash(json.atlasJSONHash);
+        if (json.hasOwnProperty("atlasXML")) this.loadAtlasXML(json.atlasXML);
+        if (json.hasOwnProperty("audio")) this.loadAudio(json.audio);
+        if (json.hasOwnProperty("audioSprite")) this.loadAudioSprite(json.audioSprite);
+        if (json.hasOwnProperty("binary")) this.loadBinary(json.binary);
+        if (json.hasOwnProperty("bitmapFont")) this.loadBitmapFont(json.bitmapFont);
+        if (json.hasOwnProperty("image")) this.loadImage(json.image);
+        if (json.hasOwnProperty("images")) this.loadImages(json.images);
+        if (json.hasOwnProperty("json")) this.loadJSON(json.json);
+        if (json.hasOwnProperty("pack")) this.loadPack(json.pack);
+        if (json.hasOwnProperty("physics")) this.loadPhysics(json.physics);
+        if (json.hasOwnProperty("script")) this.loadScript(json.script);
+        if (json.hasOwnProperty("shader")) this.loadShader(json.shader);
+        if (json.hasOwnProperty("spritesheet")) this.loadSpritesheet(json.spritesheet);
+        if (json.hasOwnProperty("text")) this.loadText(json.text);
+        if (json.hasOwnProperty("tilemap")) this.loadTilemap(json.tilemap);
+        if (json.hasOwnProperty("video")) this.loadVideo(json.video);
+        if (json.hasOwnProperty("xml")) this.loadXML(json.xml);
     }
 
     // -------- baseURL -------- //
 
-    loadBaseURL(data) {
-        if (typeof data === "string") {
-            this.game.load.baseURL = data;
+    loadBaseURL(json) {
+        if (typeof json === "string" && json !== "") {
+            this.game.load.baseURL = json;
         }
     }
 
     // -------- crossOrigin -------- //
 
-    loadCrossOrigin(data) {
-        if (typeof data === "string" || typeof data === "boolean") {
-            this.game.load.crossOrigin = data;
+    loadCrossOrigin(json) {
+        if (typeof json === "string" && json !== "" || typeof json === "boolean") {
+            this.game.load.crossOrigin = json;
         }
     }
 
     // -------- enableParallel -------- //
 
-    loadEnableParallel(data) {
-        if (typeof data === "boolean") {
-            this.game.load.enableParallel = data;
+    loadEnableParallel(json) {
+        if (typeof json === "boolean") {
+            this.game.load.enableParallel = json;
         }
     }
 
     // -------- path -------- //
 
-    loadPath(data) {
-        if (typeof data === "string") {
-            this.game.load.path = data;
+    loadPath(json) {
+        if (typeof json === "string" && json !== "") {
+            this.game.load.path = json;
         }
     }
 
     // -------- resetLocked -------- //
 
-    loadResetLocked(data) {
-        if (typeof data === "boolean") {
-            this.game.load.resetLocked = data;
+    loadResetLocked(json) {
+        if (typeof json === "boolean") {
+            this.game.load.resetLocked = json;
         }
     }
 
     // -------- atlas -------- //
 
-    loadAtlas(data) {
+    loadAtlas(json) {
         let key;
         let value;
         let i;
-        let paramA;
-        let paramB;
-        let paramC;
-        let paramD;
-        if (typeof data === "string") {
-            this.game.load.atlas(data);
+        let textureURL;
+        let atlasURL;
+        let atlasData;
+        let format;
+        if (typeof json === "string") {
+            this.game.load.atlas(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.atlas(data[i]);
-                }
-            }
-        }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.atlas(key);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.atlas(json[i]);
                 } else {
-                    paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
-                    paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
-                    paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
-                    paramD = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY;
-                    this.game.load.atlas(key, paramA, paramB, paramC, paramD);
+                    console.log("AssetLoader:: atlas keys must be of type 'string'.");
                 }
             }
+        }
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "object") {
+                    textureURL = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : key + ".png";
+                    if (textureURL) {
+                        atlasURL = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : key + ".json";
+                        // todo change check here
+                        atlasData = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
+                        if (atlasURL || atlasData) {
+                            format = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY;
+                            if (format === Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY || format === Phaser.Loader.TEXTURE_ATLAS_JSON_HASH || format === Phaser.Loader.TEXTURE_ATLAS_XML_STARLING) {
+                                this.game.load.atlas(key, textureURL, atlasURL, atlasData, format);
+                            } else {
+                                console.log("AssetLoader:: (key: " + key + ") atlas format must be Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY (0) or Phaser.Loader.TEXTURE_ATLAS_JSON_HASH (1) or Phaser.Loader.TEXTURE_ATLAS_XML_STARLING (2).");
+                            }
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") atlas must have 'atlasURL' or 'atlasData' specified.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") atlas must have a 'textureURL' specified.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'atlas' json structure is malformed.");
+                }
+            }
+        } else {
+            console.log("AssetLoader:: 'atlas' json structure is malformed.");
         }
     }
 
     // -------- atlasJSONArray -------- //
 
-    loadAtlasJSONArray(data) {
+    loadAtlasJSONArray(json) {
         let key;
         let value;
         let i;
-        let paramA;
-        let paramB;
-        let paramC;
-        if (typeof data === "string") {
-            this.game.load.atlasJSONArray(data);
+        let textureURL;
+        let atlasURL;
+        let atlasData;
+        if (typeof json === "string") {
+            this.game.load.atlasJSONArray(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.atlasJSONArray(data[i]);
-                }
-            }
-        }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.atlasJSONArray(key);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.atlasJSONArray(json[i]);
                 } else {
-                    paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
-                    paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
-                    paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
-                    this.game.load.atlasJSONArray(key, paramA, paramB, paramC);
+                    console.log("AssetLoader:: atlasJSONArray keys must be of type 'string'.");
                 }
             }
+        }
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "object" && Object.keys(value).length > 0) {
+                    textureURL = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
+                    if (textureURL) {
+                        atlasURL = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
+                        atlasData = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
+                        if (atlasURL || atlasData) {
+                            this.game.load.atlasJSONArray(key, textureURL, atlasURL, atlasData);
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") atlasJSONArray must have 'atlasURL' or 'atlasData' specified.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") atlasJSONArray must have a 'textureURL' specified.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'atlasJSONArray' json structure is malformed.");
+                }
+            }
+        } else {
+            console.log("AssetLoader:: 'atlasJSONArray' json structure is malformed.");
         }
     }
 
     // -------- atlasJSONHash -------- //
 
-    loadAtlasJSONHash(data) {
+    loadAtlasJSONHash(json) {
         let key;
         let value;
         let i;
-        let paramA;
-        let paramB;
-        let paramC;
-        if (typeof data === "string") {
-            this.game.load.atlasJSONHash(data);
+        let textureURL;
+        let atlasURL;
+        let atlasData;
+        if (typeof json === "string") {
+            this.game.load.atlasJSONHash(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.atlasJSONHash(data[i]);
-                }
-            }
-        }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.atlasJSONHash(key);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.atlasJSONHash(json[i]);
                 } else {
-                    paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
-                    paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
-                    paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
-                    this.game.load.atlasJSONHash(key, paramA, paramB, paramC);
+                    console.log("AssetLoader:: atlasJSONHash keys must be of type 'string'.");
                 }
             }
+        }
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "object" && Object.keys(value).length > 0) {
+                    textureURL = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
+                    if (textureURL) {
+                        atlasURL = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
+                        atlasData = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
+                        if (atlasURL || atlasData) {
+                            this.game.load.atlasJSONHash(key, textureURL, atlasURL, atlasData);
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") atlasJSONHash must have 'atlasURL' or 'atlasData' specified.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") atlasJSONHash must have a 'textureURL' specified.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'atlasJSONHash' json structure is malformed.");
+                }
+            }
+        } else {
+            console.log("AssetLoader:: 'atlasJSONHash' json structure is malformed.");
         }
     }
 
     // -------- atlasXML -------- //
 
-    loadAtlasXML(data) {
+    loadAtlasXML(json) {
         let key;
         let value;
         let i;
-        let paramA;
-        let paramB;
-        let paramC;
-        if (typeof data === "string") {
-            this.game.load.atlasXML(data);
+        let textureURL;
+        let atlasURL;
+        let atlasData;
+        if (typeof json === "string") {
+            this.game.load.atlasXML(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.atlasXML(data[i]);
-                }
-            }
-        }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.atlasXML(key);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.atlasXML(json[i]);
                 } else {
-                    paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
-                    paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
-                    paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
-                    this.game.load.atlasXML(key, paramA, paramB, paramC);
+                    console.log("AssetLoader:: atlasXML keys must be of type 'string'.");
                 }
             }
+        }
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "object" && Object.keys(value).length > 0) {
+                    textureURL = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
+                    if (textureURL) {
+                        atlasURL = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
+                        atlasData = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
+                        if (atlasURL || atlasData) {
+                            this.game.load.atlasXML(key, textureURL, atlasURL, atlasData);
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") atlasXML must have 'atlasURL' or 'atlasData' specified.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") atlasXML must have a 'textureURL' specified.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'atlasXML' json structure is malformed.");
+                }
+            }
+        } else {
+            console.log("AssetLoader:: 'atlasXML' json structure is malformed.");
         }
     }
 
+
     // -------- audio -------- //
 
-    loadAudio(data) {
+    loadAudio(json) {
         let key;
         let value;
-        let paramA;
-        let paramB;
-        for (key in data) {
-            value = data[key];
-            if (typeof value === "string" || Array.isArray(value)) {
-                this.game.load.audio(key, value);
+        let urls;
+        let autoDecode;
+        if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if ((typeof value === "string" && value !== "") || (Array.isArray(value) && value.length > 0)) {
+                    this.game.load.audio(key, value);
+                }
+                else if (typeof value === "object" && Object.keys(value).length > 0) {
+                    urls = (value.hasOwnProperty("urls")) ? value["urls"] : null;
+                    if (urls) {
+                        autoDecode = (value.hasOwnProperty("autoDecode")) ? value["autoDecode"] : true;
+                        if (typeof autoDecode === "boolean") {
+                            this.game.load.audio(key, urls, autoDecode);
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") audio 'autoDecode' must be of type 'boolean'.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") audio must have a 'urls' specified.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'audio' json structure is malformed.");
+                }
             }
-            else if (typeof value === "object") {
-                paramA = (value.hasOwnProperty("urls")) ? value["urls"] : null;
-                paramB = (value.hasOwnProperty("autoDecode")) ? value["autoDecode"] : true;
-                this.game.load.audio(key, paramA, paramB);
-            }
+        } else {
+            console.log("AssetLoader:: 'audio' json structure is malformed.");
         }
     }
 
     // -------- audioSprite -------- //
 
-    loadAudioSprite(data) {
+    loadAudioSprite(json) {
         let key;
         let value;
-        let paramA;
-        let paramB;
-        let paramC;
-        let paramD;
-        for (key in data) {
-            value = data[key];
-            //todo have to have jsonURL or jsonData
-            if (typeof value === "string" || Array.isArray(value)) {
-                this.game.load.audioSprite(key, value);
+        let urls;
+        let jsonURL;
+        let jsonData;
+        let autoDecode;
+        if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "object" && Object.keys(value).length > 0) {
+                    urls = (value.hasOwnProperty("urls")) ? value["urls"] : null;
+                    if (urls) {
+                        jsonURL = (value.hasOwnProperty("jsonURL")) ? value["jsonURL"] : null;
+                        jsonData = (value.hasOwnProperty("jsonData")) ? value["jsonData"] : null;
+                        if (jsonURL || jsonData) {
+                            autoDecode = (value.hasOwnProperty("autoDecode")) ? value["autoDecode"] : true;
+                            if (typeof autoDecode === "boolean") {
+                                this.game.load.audioSprite(key, urls, jsonURL, jsonData, autoDecode);
+                            } else {
+                                console.log("AssetLoader:: (key: " + key + ") audioSprite 'autoDecode' must be of type 'boolean'.");
+                            }
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") audioSprite must have 'jsonURL' or 'jsonData' specified.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") audioSprite must have a 'urls' specified.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'audioSprite' json structure is malformed.");
+                }
             }
-            else if (typeof value === "object") {
-                paramA = (value.hasOwnProperty("urls")) ? value["urls"] : null;
-                paramB = (value.hasOwnProperty("jsonURL")) ? value["jsonURL"] : null;
-                paramC = (value.hasOwnProperty("jsonData")) ? value["jsonData"] : null;
-                paramD = (value.hasOwnProperty("autoDecode")) ? value["autoDecode"] : true;
-                this.game.load.audioSprite(key, paramA, paramB, paramC, paramD);
-            }
+        } else {
+            console.log("AssetLoader:: 'audioSprite' json structure is malformed.");
         }
     }
 
     // -------- binary -------- //
 
-    loadBinary(data) {
+    loadBinary(json) {
         let key;
         let value;
         let i;
-        if (typeof data === "string") {
-            this.game.load.binary(data);
+        if (typeof json === "string") {
+            this.game.load.binary(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.binary(data[i]);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.binary(json[i]);
+                } else {
+                    console.log("AssetLoader:: binary keys must be of type 'string'.");
                 }
             }
         }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.binary(key);
-                }
-                else if (typeof value === "string") {
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "string") {
                     this.game.load.binary(key, value);
                 }
-                else if (typeof value === "object") {
+                else if (typeof value === "object" && Object.keys(value).length > 0) {
                     if (value.hasOwnProperty("url")) {
                         this.game.load.binary(key, value["url"]);
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") binary must have a 'url' specified.");
                     }
+                } else {
+                    console.log("AssetLoader:: 'binary' json structure is malformed.");
                 }
             }
+        } else {
+            console.log("AssetLoader:: 'binary' json structure is malformed.");
         }
     }
 
     // -------- bitmapFont -------- //
 
-    loadBitmapFont(data) {
+    loadBitmapFont(json) {
         let key;
         let value;
         let i;
-        let paramA;
-        let paramB;
-        let paramC;
-        let paramD;
-        let paramE;
-        if (typeof data === "string") {
-            this.game.load.bitmapFont(data);
+        let textureURL;
+        let atlasURL;
+        let atlasData;
+        let xSpacing;
+        let ySpacing;
+        if (typeof json === "string") {
+            this.game.load.bitmapFont(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.bitmapFont(data[i]);
-                }
-            }
-        }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.bitmapFont(key);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.bitmapFont(json[i]);
                 } else {
-                    paramA = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
-                    paramB = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
-                    paramC = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
-                    paramD = (value.hasOwnProperty("xSpacing")) ? value["xSpacing"] : 0;
-                    paramE = (value.hasOwnProperty("ySpacing")) ? value["ySpacing"] : 0;
-                    this.game.load.bitmapFont(key, paramA, paramB, paramC, paramD, paramE);
+                    console.log("AssetLoader:: bitmapFont keys must be of type 'string'.");
                 }
             }
+        }
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "object" && Object.keys(value).length > 0) {
+                    textureURL = (value.hasOwnProperty("textureURL")) ? value["textureURL"] : null;
+                    if (textureURL) {
+                        atlasURL = (value.hasOwnProperty("atlasURL")) ? value["atlasURL"] : null;
+                        atlasData = (value.hasOwnProperty("atlasData")) ? value["atlasData"] : null;
+                        if (atlasURL || atlasData) {
+                            xSpacing = (value.hasOwnProperty("xSpacing")) ? value["xSpacing"] : 0;
+                            ySpacing = (value.hasOwnProperty("ySpacing")) ? value["ySpacing"] : 0;
+                            if (typeof xSpacing === "number" && typeof ySpacing === "number") {
+                                this.game.load.bitmapFont(key, textureURL, atlasURL, atlasData, xSpacing, ySpacing);
+                            } else {
+                                console.log("AssetLoader:: (key: " + key + ") bitmapFont 'xSpacing' and 'ySpacing' must be of type 'number'.");
+                            }
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") bitmapFont must have 'atlasURL' or 'atlasData' specified.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") bitmapFont must have a 'textureURL' specified.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'bitmapFont' json structure is malformed.");
+                }
+            }
+        } else {
+            console.log("AssetLoader:: 'bitmapFont' json structure is malformed.");
         }
     }
 
     // -------- image -------- //
 
-    loadImage(data) {
+    loadImage(json) {
         let key;
         let value;
         let i;
-        let paramA;
-        let paramB;
-        if (typeof data === "string") {
-            this.game.load.image(data);
+        let url;
+        let overwrite;
+        if (typeof json === "string") {
+            this.game.load.image(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.image(data[i]);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.image(json[i]);
+                } else {
+                    console.log("AssetLoader:: image keys must be of type 'string'.");
                 }
             }
         }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.image(key);
-                }
-                else if (typeof value === "string") {
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "string") {
                     this.game.load.image(key, value);
                 }
                 else if (typeof value === "object") {
-                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".png";
-                    paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
-                    this.game.load.image(key, paramA, paramB);
+                    url = (value.hasOwnProperty("url")) ? value["url"] : key + ".png";
+                    if (typeof url === "string") {
+                        overwrite = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
+                        if (typeof overwrite === "boolean") {
+                            this.game.load.image(key, url, overwrite);
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") image 'overwrite' must be of type 'boolean'.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") image 'url' must be of type 'string'.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'image' json structure is malformed.");
                 }
             }
+        } else {
+            console.log("AssetLoader:: 'image' json structure is malformed.");
         }
     }
 
     // -------- images -------- //
 
-    loadImages(data) {
+    loadImages(json) {
         let key;
-        let i;
-        let paramA;
-        let paramB;
-        if (Array.isArray(data)) {
-            if (typeof data[0] === "string") {
-                this.game.load.images(data);
-            }
-            else if (typeof data[0] === "object") {
-                for (i = 0; i < data.length; i++) {
-                    key = data[i];
-                    paramA = (key.hasOwnProperty("keys")) ? key["keys"] : null;
-                    paramB = (key.hasOwnProperty("urls")) ? key["urls"] : false;
-                    this.game.load.images(key, paramA, paramB);
-                }
-            }
+        let keys;
+        let urls;
+        if (Array.isArray(json)) {
+            this.game.load.images(json);
         }
-        else if (typeof data === "object") {
-            paramA = (data.hasOwnProperty("keys")) ? data["keys"] : null;
-            paramB = (data.hasOwnProperty("urls")) ? data["urls"] : false;
-            this.game.load.images(key, paramA, paramB);
+        else if (typeof json === "object") {
+            keys = (json.hasOwnProperty("keys")) ? json["keys"] : null;
+            urls = (json.hasOwnProperty("urls")) ? json["urls"] : false;
+            if (keys && urls) {
+                this.game.load.images(key, keys, urls);
+            } else {
+                console.log("AssetLoader:: images must have 'keys' and 'urls' specified.");
+            }
+        } else {
+            console.log("AssetLoader:: 'images' json structure is malformed.");
         }
     }
 
     // -------- json -------- //
 
-    loadJSON(data) {
+    loadJSON(json) {
         let key;
         let value;
         let i;
-        let paramA;
-        let paramB;
-        if (typeof data === "string") {
-            this.game.load.json(data);
+        let url;
+        let overwrite;
+        if (typeof json === "string") {
+            this.game.load.json(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.json(data[i]);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.json(json[i]);
+                } else {
+                    console.log("AssetLoader:: 'json' keys must be of type 'string'.");
                 }
             }
         }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.json(key);
-                }
-                else if (typeof value === "string") {
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "string") {
                     this.game.load.json(key, value);
                 }
                 else if (typeof value === "object") {
-                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
-                    paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
-                    this.game.load.json(key, paramA, paramB);
+                    url = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
+                    if (typeof url === "string") {
+                        overwrite = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
+                        if (typeof overwrite === "boolean") {
+                            this.game.load.json(key, url, overwrite);
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") json 'overwrite' must be of type 'boolean'.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") json 'url' must be of type 'string'.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'json' json structure is malformed.");
                 }
             }
+        } else {
+            console.log("AssetLoader:: 'json' json structure is malformed.");
         }
     }
 
     // -------- pack -------- //
 
-    loadPack(data) {
+    loadPack(json) {
         let key;
         let value;
-        for (key in data) {
-            value = data[key];
-            if (typeof value === "string") {
-                this.game.load.pack(key, value);
+        if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "string") {
+                    this.game.load.pack(key, value);
+                }
+                else if (typeof value === "object") {
+                    this.game.load.pack(key, null, value);
+                } else {
+                    console.log("AssetLoader:: 'pack' json structure is malformed.");
+                }
             }
-            // todo either or thing again with url or data
-            else if (typeof value === "object") {
-                paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
-                paramB = (value.hasOwnProperty("data")) ? value["data"] : null;
-                this.game.load.physics(key, paramA, paramB);
-            }
+        } else {
+            console.log("AssetLoader:: 'pack' json structure is malformed.");
         }
     }
 
     // -------- physics -------- //
 
-    loadPhysics(data) {
+    loadPhysics(json) {
         let key;
+        let i;
         let value;
-        let paramA;
-        let paramB;
-        let paramC;
-        if (typeof data === "string") {
-            this.game.load.physics(data);
+        let url;
+        let data;
+        let format;
+        if (typeof json === "string") {
+            this.game.load.physics(json);
         }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.physics(key);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.physics(json[i]);
+                } else {
+                    console.log("AssetLoader:: physics keys must be of type 'string'.");
                 }
-                else if (typeof value === "string") {
+            }
+        }
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "string") {
                     this.game.load.physics(key, value);
                 }
                 else if (typeof value === "object") {
-                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
-                    paramB = (value.hasOwnProperty("data")) ? value["data"] : null;
-                    paramC = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Physics.LIME_CORONA_JSON;
-                    this.game.load.physics(key, paramA, paramB, paramC);
+                    url = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
+                    if (typeof url === "string") {
+                        json = (value.hasOwnProperty("data")) ? value["data"] : null;
+                        if (data && typeof data !== "object") {
+                            console.log("AssetLoader:: (key: " + key + ") physics 'data' must be of type 'object'.");
+                        } else {
+                            format = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Loader.PHYSICS_LIME_CORONA_JSON;
+                            if (format === Phaser.Loader.PHYSICS_LIME_CORONA_JSON || format === Phaser.Loader.PHYSICS_PHASER_JSON) {
+                                this.game.load.physics(key, url, data, format);
+                            } else {
+                                console.log("AssetLoader:: (key: " + key + ") physics 'format' must be Phaser.Loader.PHYSICS_LIME_CORONA_JSON (3) or Phaser.Loader.PHYSICS_PHASER_JSON (4).");
+                            }
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") physics 'url' must be of type 'string'.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'physics' json structure is malformed.");
                 }
             }
+        } else {
+            console.log("AssetLoader:: 'physics' json structure is malformed.");
         }
     }
 
     // -------- script -------- //
 
-    loadScript(data) {
+    loadScript(json) {
         let key;
+        let i;
         let value;
-        let paramA;
-        if (typeof data === "string") {
-            this.game.load.script(data);
+        if (typeof json === "string") {
+            this.game.load.script(json);
         }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.script(key);
-                }
-                else if (typeof value === "string") {
-                    this.game.load.script(key, value);
-                }
-                else if (typeof value === "object") {
-                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".js";
-                    this.game.load.script(key, paramA);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.script(json[i]);
+                } else {
+                    console.log("AssetLoader:: script keys must be of type 'string'.");
                 }
             }
+        }
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "string") {
+                    this.game.load.script(key, value);
+                }
+                else if (typeof value === "object" && Object.keys(value).length > 0) {
+                    if (value.hasOwnProperty("url")) {
+                        this.game.load.script(key, value["url"]);
+                    } else {
+                        //todo this is wrong... <key>.js
+                        console.log("AssetLoader:: (key: " + key + ") script 'url' must be specified.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'script' json structure is malformed.");
+                }
+            }
+        } else {
+            console.log("AssetLoader:: 'script' json structure is malformed.");
         }
     }
 
     // -------- shader -------- //
 
-    loadShader(data) {
+    loadShader(json) {
         let key;
         let value;
         let i;
-        let paramA;
-        let paramB;
-        if (typeof data === "string") {
-            this.game.load.shader(data);
+        let url;
+        let overwrite;
+        if (typeof json === "string") {
+            this.game.load.shader(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.shader(data[i]);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.shader(json[i]);
+                } else {
+                    console.log("AssetLoader:: shader keys must be of type 'string'.");
                 }
             }
         }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.shader(key);
-                }
-                else if (typeof value === "string") {
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "string") {
                     this.game.load.shader(key, value);
                 }
                 else if (typeof value === "object") {
-                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".frag";
-                    paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
-                    this.game.load.shader(key, paramA, paramB);
+                    url = (value.hasOwnProperty("url")) ? value["url"] : key + ".frag";
+                    if (typeof url === "string") {
+                        overwrite = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
+                        if (typeof overwrite === "boolean") {
+                            this.game.load.shader(key, url, overwrite);
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") shader 'overwrite' must be of type 'boolean'.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") shader 'url' must be of type 'string'.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'shader' json structure is malformed.");
                 }
             }
+        } else {
+            console.log("AssetLoader:: 'shader' json structure is malformed.");
         }
     }
 
     // -------- spritesheet -------- //
 
-    loadSpritesheet(data) {
+    loadSpritesheet(json) {
         let key;
         let value;
-        let paramA;
-        let paramB;
-        let paramC;
-        let paramD;
-        let paramE;
-        let paramF;
-        for (key in data) {
-            value = data[key];
-            paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".png";
-            if (value.hasOwnProperty("frameWidth")) {
-                paramB = value["frameWidth"];
-            } else {
-                paramB = 0;
-                console.log("spritesheets must have a 'frameWidth' specified");
+        let url;
+        let frameWidth;
+        let frameHeight;
+        let frameMax;
+        let margin;
+        let spacing;
+        if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                //todo work on this more
+                url = (value.hasOwnProperty("url")) ? value["url"] : key + ".png";
+                if (value.hasOwnProperty("frameWidth")) {
+                    frameWidth = value["frameWidth"];
+                } else {
+                    frameWidth = 0;
+                    console.log("AssetLoader:: (key: " + key + ") spritesheets must have a 'frameWidth' specified");
+                }
+                if (value.hasOwnProperty("frameHeight")) {
+                    frameHeight = value["frameHeight"];
+                } else {
+                    frameHeight = 0;
+                    console.log("AssetLoader:: (key: " + key + ") spritesheets must have a 'frameHeight' specified");
+                }
+                frameMax = (value.hasOwnProperty("frameMax")) ? value["frameMax"] : -1;
+                margin = (value.hasOwnProperty("margin")) ? value["margin"] : 0;
+                spacing = (value.hasOwnProperty("spacing")) ? value["spacing"] : 0;
+                this.game.load.spritesheet(key, url, frameWidth, frameHeight, frameMax, margin, spacing);
             }
-            if (value.hasOwnProperty("frameHeight")) {
-                paramC = value["frameHeight"];
-            } else {
-                paramC = 0;
-                console.log("spritesheets must have a 'frameHeight' specified");
-            }
-            paramD = (value.hasOwnProperty("frameMax")) ? value["frameMax"] : -1;
-            paramE = (value.hasOwnProperty("margin")) ? value["margin"] : 0;
-            paramF = (value.hasOwnProperty("spacing")) ? value["spacing"] : 0;
-            this.game.load.spritesheet(key, paramA, paramB, paramC, paramD, paramE, paramF);
+        } else {
+            console.log("AssetLoader:: 'spritesheet' json structure is malformed.");
         }
     }
 
     // -------- text -------- //
 
-    loadText(data) {
+    loadText(json) {
         let key;
         let value;
         let i;
-        let paramA;
-        let paramB;
-        if (typeof data === "string") {
-            this.game.load.text(data);
+        let url;
+        let overwrite;
+        if (typeof json === "string") {
+            this.game.load.text(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.text(data[i]);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.text(json[i]);
+                } else {
+                    console.log("AssetLoader:: text keys must be of type 'string'.");
                 }
             }
         }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.text(key);
-                }
-                else if (typeof value === "string") {
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "string") {
                     this.game.load.text(key, value);
                 }
                 else if (typeof value === "object") {
-                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".txt";
-                    paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
-                    this.game.load.text(key, paramA, paramB);
+                    url = (value.hasOwnProperty("url")) ? value["url"] : key + ".txt";
+                    if (typeof url === "string") {
+                        overwrite = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
+                        if (typeof overwrite === "boolean") {
+                            this.game.load.text(key, url, overwrite);
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") text 'overwrite' must be of type 'boolean'.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") text 'url' must be of type 'string'.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'text' json structure is malformed.");
                 }
             }
+        } else {
+            console.log("AssetLoader:: 'text' json structure is malformed.");
         }
     }
 
     // -------- tilemap -------- //
 
-    loadTilemap(data) {
+    loadTilemap(json) {
         let key;
+        let i;
         let value;
-        let paramA;
-        let paramB;
-        let paramC;
-        if (typeof data === "string") {
-            this.game.load.tilemap(data);
+        let url;
+        let data;
+        let format;
+        if (typeof json === "string") {
+            this.game.load.tilemap(json);
         }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.tilemap(key);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.tilemap(json[i]);
+                } else {
+                    console.log("AssetLoader:: tilemap keys must be of type 'string'.");
                 }
-                else if (typeof value === "string") {
+            }
+        }
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "string") {
                     this.game.load.tilemap(key, value);
                 }
                 else if (typeof value === "object") {
-                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
-                    paramB = (value.hasOwnProperty("data")) ? value["data"] : null;
-                    paramC = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Tilemap.CSV;
-                    this.game.load.tilemap(key, paramA, paramB, paramC);
+                    url = (value.hasOwnProperty("url")) ? value["url"] : key + ".json";
+                    if (typeof url === "string") {
+                        if (data && typeof data !== "object") {
+                            console.log("AssetLoader:: (key: " + key + ") tilemap 'data' must be of type 'object'.");
+                        } else {
+                            format = (value.hasOwnProperty("format")) ? value["format"] : Phaser.Tilemap.CSV;
+                            if (format === Phaser.Tilemap.CSV || format === Phaser.Tilemap.TILED_JSON) {
+                                this.game.load.tilemap(key, url, data, format);
+                            } else {
+                                console.log("AssetLoader:: (key: " + key + ") tilemap 'format' must be Phaser.Tilemap.CSV (0) or Phaser.Tilemap.TILED_JSON (1).");
+                            }
+                        }
+                    } else {
+                        console.log("AssetLoader:: tilemap 'url' must be of type 'string'.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'tilemap' json structure is malformed.");
                 }
             }
+        } else {
+            console.log("AssetLoader:: 'tilemap' json structure is malformed.");
         }
     }
 
     // -------- video -------- //
 
-    loadVideo(data) {
+    loadVideo(json) {
         let key;
         let value;
-        let paramA;
-        let paramB;
-        let paramC;
-        if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (typeof value === "string" || Array.isArray(value)) {
+        let urls;
+        let loadEvent;
+        let asBlob;
+        if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if ((typeof value === "string" && value !== "") || (Array.isArray(value) && value.length > 0)) {
                     this.game.load.video(key, value);
                 }
-                else if (typeof value === "object") {
-                    paramA = (value.hasOwnProperty("urls")) ? value["urls"] : null;
-                    paramB = (value.hasOwnProperty("loadEvent")) ? value["loadEvent"] : "canplaythrough";
-                    paramC = (value.hasOwnProperty("asBlob")) ? value["asBlob"] : false;
-                    this.game.load.video(key, paramA, paramB, paramC);
+                else if (typeof value === "object" && Object.keys(value).length > 0) {
+                    urls = (value.hasOwnProperty("urls")) ? value["urls"] : null;
+                    if (urls) {
+                        loadEvent = (value.hasOwnProperty("loadEvent")) ? value["loadEvent"] : "canplaythrough";
+                        if (loadEvent === "canplaythrough" || loadEvent === "canplay" || loadEvent === "loadedata") {
+                            asBlob = (value.hasOwnProperty("asBlob")) ? value["asBlob"] : false;
+                            if (typeof asBlob === "boolean") {
+                                this.game.load.video(key, urls, loadEvent, asBlob);
+                            } else {
+                                console.log("AssetLoader:: video 'asBlob' must be of type 'boolean'.");
+                            }
+                        } else {
+                            console.log("AssetLoader:: video 'loadEvent' must be 'canplaythrough', 'canplay', or 'loadeddata'.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: video 'urls' must be specified.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'video' json structure is malformed.");
                 }
             }
+        } else {
+            console.log("AssetLoader:: 'video' json structure is malformed.");
         }
     }
 
     // -------- xml -------- //
 
-    loadXML(data) {
+    loadXML(json) {
         let key;
         let value;
         let i;
-        let paramA;
-        let paramB;
-        if (typeof data === "string") {
-            this.game.load.xml(data);
+        let url;
+        let overwrite;
+        if (typeof json === "string") {
+            this.game.load.xml(json);
         }
-        else if (Array.isArray(data)) {
-            for (i = 0; i < data.length; i++) {
-                if (typeof data[i] === "string") {
-                    this.game.load.xml(data[i]);
+        else if (Array.isArray(json)) {
+            for (i = 0; i < json.length; i++) {
+                if (typeof json[i] === "string") {
+                    this.game.load.xml(json[i]);
+                } else {
+                    console.log("AssetLoader:: xml keys must be of type 'string'.");
                 }
             }
         }
-        else if (typeof data === "object") {
-            for (key in data) {
-                value = data[key];
-                if (!value) {
-                    // if value is undefined, null, false, 0, nan, ""
-                    this.game.load.xml(key);
-                }
-                else if (typeof value === "string") {
+        else if (typeof json === "object") {
+            for (key in json) {
+                value = json[key];
+                if (typeof value === "string") {
                     this.game.load.xml(key, value);
                 }
                 else if (typeof value === "object") {
-                    paramA = (value.hasOwnProperty("url")) ? value["url"] : key + ".xml";
-                    paramB = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
-                    this.game.load.xml(key, paramA, paramB);
+                    url = (value.hasOwnProperty("url")) ? value["url"] : key + ".xml";
+                    if (typeof url === "string") {
+                        overwrite = (value.hasOwnProperty("overwrite")) ? value["overwrite"] : false;
+                        if (typeof overwrite === "boolean") {
+                            this.game.load.xml(key, url, overwrite);
+                        } else {
+                            console.log("AssetLoader:: (key: " + key + ") xml 'overwrite' must be of type 'boolean'.");
+                        }
+                    } else {
+                        console.log("AssetLoader:: (key: " + key + ") xml 'url' must be of type 'string'.");
+                    }
+                } else {
+                    console.log("AssetLoader:: 'xml' json structure is malformed.");
                 }
             }
+        } else {
+            console.log("AssetLoader:: 'xml' json structure is malformed.");
         }
     }
 }
