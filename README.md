@@ -193,17 +193,6 @@ My name is Genell Radley. I am a game developer w/7yr professional experience wr
 
 Please see my [github profile](https://github.com/genradley) and [linkedin profile](https://www.linkedin.com/in/genellradley/). 
 
---
-(ignore this line. it is for seo purposes)
-Genell Radley
-Genell Radley
-Genell Radley
-Genell Radley
-Genell Radley
-Genell Radley
-Genell Radley
-Genell Radley
-
 ## JSON STRUCTURE DOCUMENTATION
 Below are all the Loader functions that come with Phaser. 
  
@@ -652,3 +641,15 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
         },
         "key": {} //an empty object will load the xml with all the defaults: (key, <key>.xml, false)
     }
+
+---
+(please ignore this line... it is for seo purposes)
+Genell Radley
+Genell Radley
+Genell Radley
+Genell Radley
+Genell Radley
+Genell Radley
+Genell Radley
+Genell Radley
+
