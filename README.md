@@ -1,6 +1,6 @@
 # Phaser Asset Loader
 
-The Phaser AssetLoader library was written with Phaser version 2.6.2. It should work with Phaser CE. Test for that coming soon...
+The Phaser AssetLoader library was written with Phaser version 2.6.2. It should work with Phaser CE. Tests for that coming soon...
 
 ## CODE  
 Steps to getting AssetLoader into your game:
@@ -154,7 +154,7 @@ I often make an empty class (as an enum) just to use as a holder for my consts.
     }
 
 ## UNIT TESTS
-In order to test the AssetLoader, I made a simple Phaser game that loads assets and puts them on the stage. There are several json files that I run the game with in order to test the various json structures available. I also ran the test in both Phaser.WEBGL and Phaser.CANVAS modes.
+In order to test the AssetLoader, I made a simple Phaser game ([test](/test))that loads assets and puts them on the stage. There are several json files that I run the game with in order to test the various json structures available. I also ran the test in both Phaser.WEBGL and Phaser.CANVAS modes.
 
 Please open an [issue](https://github.com/genradley/AssetLoader/issues) if you find any bugs. We will fix the issue and add a test for it.
 
