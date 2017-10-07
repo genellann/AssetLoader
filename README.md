@@ -3,7 +3,9 @@
 The Phaser AssetLoader library was written with Phaser version 2.6.2. It should work with Phaser CE. Test for that coming soon...
 
 ## CODE  
-Steps to getting AssetLoader into your game (example project: [test](/test)):
+Steps to getting AssetLoader into your game:
+
+_example project: [test](/test)_
 
 ### 1. Include the [min](/main/dist) in your project through the index.html
 ---
@@ -13,7 +15,9 @@ Steps to getting AssetLoader into your game (example project: [test](/test)):
         </body>
     </html>
 
-### 2. Create your json file (example json: [template.json](/test/data/template.json))
+### 2. Create your json file
+ 
+_example json: [template.json](/test/data/template.json)_
 
 ---
     assets.json = {
@@ -66,7 +70,7 @@ There are some load methods that allow callbacks and callback contexts to be pas
 
 ### Preload Sprite
 If you are using a preload sprite, an image that will show during the loading period of your game, you can either:
-1. Load it outside of the AssetLoader at the same time you load your json for the AssetLoader.
+#### 1. Load Preload Sprite on its own:
 
 ---
     class BootState extends Phaser.State {
@@ -92,7 +96,7 @@ If you are using a preload sprite, an image that will show during the loading pe
         }
     }
 
-2. List it first in your json file, listen for when it is loaded, then add it to the stage. 
+#### 2. Load Preload Sprite with AssetLoader, add it to the stage when ready: 
 
 ---
     class LoadState extends Phaser.State {
