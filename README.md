@@ -154,7 +154,7 @@ I often make an empty class (as an enum) just to use as a holder for my consts.
     }
 
 ## UNIT TESTS
-In order to test the AssetLoader, I made a simple Phaser game ([test](/test))that loads assets and puts them on the stage. There are several json files that I run the game with in order to test the various json structures available. I also ran the test in both Phaser.WEBGL and Phaser.CANVAS modes.
+In order to test the AssetLoader, I made a simple Phaser game ([test](/test)) that loads assets and puts them on the stage. There are several json files that I run the game with in order to test the various json structures available. I also ran the test in both Phaser.WEBGL and Phaser.CANVAS modes.
 
 Please open an [issue](https://github.com/genradley/AssetLoader/issues) if you find any bugs. We will fix the issue and add a test for it.
 
@@ -172,9 +172,9 @@ More coming soon...
 ## CREDITS
 This project used the [webpack-library-starter](https://github.com/krasimir/webpack-library-starter) project
 
-Some of the test assets are from the Phaser game [Elemental One]()
+Some of the test assets are from the Phaser game [Elemental One](https://github.com/voithos/elemental-one)
 
-Some of the test assets are from [Phaser's example code]()
+Some of the test assets are from [Phaser's example code](https://github.com/photonstorm/phaser-examples)
 
 ## ABOUT ME
 My name is Genell Radley. I am a game developer w/7yr professional experience writing games in Flash, Unity and HTML5. I believe in unit testing and documenting my code well. I am very excited to share my code here with you on GitHub. I hope you will contribute. 
@@ -184,7 +184,7 @@ Please see my [github profile](https://github.com/genradley) and [linkedin profi
 ## JSON STRUCTURE DOCUMENTATION
 Below are all the Loader functions that come with Phaser. 
  
-The function names are linked to the [Phaser.Loader](http://phaser.io/docs/2.6.2/Phaser.Loader) doc. I have also listed the params in jsdoc notation so you can see information about the params like data type, whether it's required, and default values.
+The function names are linked to the [Phaser.Loader](http://phaser.io/docs/2.6.2/Phaser.Loader.html) doc. I have also listed the params in jsdoc notation so you can see information about the params like data type, whether it's required, and default values.
  
 There are examples of how you can structure your json for each Loader function. There are several ways per load function of how you can form your json object.
 
