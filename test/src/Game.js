@@ -1,7 +1,7 @@
 /**
  * Created by Genell Radley in 2017.
  *
- * https://github.com/gradley/PhaserAssetLoader
+ * https://github.com/gradley/AssetLoader
  */
 
 "use strict";
@@ -14,8 +14,8 @@ import PlayState from "./PlayState";
 class Game extends Phaser.Game {
 
     constructor() {
-        super(800, 600, Phaser.WEBGL);
-        // super(800, 600, Phaser.CANVAS);
+        // super(800, 600, Phaser.WEBGL);
+        super(800, 600, Phaser.CANVAS);
 
         this.state.add(GameKeys.BOOT, BootState);
         this.state.add(GameKeys.LOAD, LoadState);
