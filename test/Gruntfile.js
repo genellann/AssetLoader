@@ -9,7 +9,8 @@ module.exports = function (grunt) {
         options: {
           transform: [["babelify", {"presets": ["es2015", "stage-0"]}]],
           external: [
-            "../AssetLoaderTest/lib/phaser.min.js"
+            "../AssetLoaderTest/lib/phaser.min.js",
+            "../AssetLoaderTest/lib/phaser-asset-loader-0.0.1.min.js"
           ],
           browserifyOptions: {
             debug: true

@@ -1,208 +1,748 @@
 {
+  "path": "assets/",
   "atlas": {
-    "atlasTest": {
-      "textureURL": "assets/atlasTest.png",
-      "atlasURL": "assets/atlasTest.json"
-    },
+    "atlasTest": {},
     "atlasTest1": {
-      "textureURL": "assets/atlasTest1.png",
-      "atlasData": {
-        "test": "test"
-      }
+      "textureURL": "atlasTest1.png"
     },
     "atlasTest2": {
-      "textureURL": "assets/atlasTest2.png",
-      "atlasURL": "assets/atlasTest2.json",
+      "atlasURL": "atlasTest2.json"
+    },
+    "atlasTest3": {
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasTest4": {
+      "format": 0
+    },
+    "atlasTest5": {
+      "textureURL": "atlasTest5.png",
+      "atlasURL": "atlasTest5.json"
+    },
+    "atlasTest6": {
+      "textureURL": "atlasTest_hash.png",
+      "atlasURL": "atlasTest_hash.json",
       "format": 1
-    }
+    },
+    "atlasTest7": {
+      "textureURL": "atlasTest7.png",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasTest8": {
+      "textureURL": "atlasTest8.png",
+      "atlasData": {
+        "test": "test"
+      },
+      "format": 1
+    },
+    "atlasTest9": {
+      "atlasData": {
+        "test": "test"
+      },
+      "format": 0
+    },
+    "mistake": {
+      "atlasData": "atlasTest_hash.json"
+    },
+    "mistake1": {
+      "format": 27
+    },
+    "mistake2": {
+      "atlasURL": {}
+    },
+    "mistake3": {
+      "textureURL": true
+    },
+    "mistake4": 1
   },
   "atlasJSONArray": {
-    "atlasJSONArrayTest": {
-      "textureURL": "assets/atlasJSONArrayTest.png",
-      "atlasURL": "assets/atlasJSONArrayTest.json"
-    },
+    "atlasJSONArrayTest": {},
     "atlasJSONArrayTest1": {
-      "textureURL": "assets/atlasJSONArrayTest1.png",
+      "textureURL": "atlasJSONArrayTest1.png"
+    },
+    "atlasJSONArrayTest2": {
+      "atlasURL": "atlasJSONArrayTest2.json"
+    },
+    "atlasJSONArrayTest3": {
       "atlasData": {
         "test": "test"
       }
-    }
+    },
+    "atlasJSONArrayTest4": {
+      "textureURL": "atlasJSONArrayTest4.png",
+      "atlasURL": "atlasJSONArrayTest4.json"
+    },
+    "atlasJSONArrayTest5": {
+      "textureURL": "atlasJSONArrayTest5.png",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasJSONArrayTest6": {
+      "atlasURL": "atlasJSONArrayTest6.json",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasJSONArrayTest7": {
+      "textureURL": "atlasJSONArrayTest7.png",
+      "atlasURL": "atlasJSONArrayTest7.json",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "mistake": {
+      "atlasData": ""
+    },
+    "mistake1": {
+      "atlasURL": []
+    },
+    "mistake2": {
+      "textureURL": 23
+    },
+    "mistake3": true
   },
   "atlasJSONHash": {
-    "atlasJSONHashTest": {
-      "textureURL": "assets/atlasJSONHashTest.png",
-      "atlasURL": "assets/atlasJSONHashTest.json"
-    },
+    "atlasJSONHashTest": {},
     "atlasJSONHashTest1": {
-      "textureURL": "assets/atlasJSONHashTest1.png",
+      "textureURL": "atlasJSONHashTest1.png"
+    },
+    "atlasJSONHashTest2": {
+      "atlasURL": "atlasJSONHashTest2.json"
+    },
+    "atlasJSONHashTest3": {
       "atlasData": {
         "test": "test"
       }
-    }
+    },
+    "atlasJSONHashTest4": {
+      "textureURL": "atlasJSONHashTest4.png",
+      "atlasURL": "atlasJSONHashTest4.json"
+    },
+    "atlasJSONHashTest5": {
+      "textureURL": "atlasJSONHashTest5.png",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasJSONHashTest6": {
+      "atlasURL": "atlasJSONHashTest6.json",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasJSONHashTest7": {
+      "textureURL": "atlasJSONHashTest7.png",
+      "atlasURL": "atlasJSONHashTest7.json",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "mistake": {
+      "atlasData": []
+    },
+    "mistake1": {
+      "atlasURL": 76
+    },
+    "mistake2": {
+      "textureURL": {}
+    },
+    "mistake3": ""
   },
   "atlasXML": {
-    "atlasXMLTest": {
-      "textureURL": "assets/atlasXMLTest.png",
-      "atlasURL": "assets/atlasXMLTest.xml"
-    },
+    "atlasXMLTest": {},
     "atlasXMLTest1": {
-      "textureURL": "assets/atlasXMLTest1.png",
+      "textureURL": "atlasXMLTest1.png"
+    },
+    "atlasXMLTest2": {
+      "atlasURL": "atlasXMLTest2.xml"
+    },
+    "atlasXMLTest3": {
       "atlasData": {
         "test": "test"
       }
-    }
+    },
+    "atlasXMLTest4": {
+      "textureURL": "atlasXMLTest4.png",
+      "atlasURL": "atlasXMLTest4.xml"
+    },
+    "atlasXMLTest5": {
+      "textureURL": "atlasXMLTest5.png",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasXMLTest6": {
+      "atlasURL": "atlasXMLTest6.xml",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "atlasXMLTest7": {
+      "textureURL": "atlasXMLTest7.png",
+      "atlasURL": "atlasXMLTest7.xml",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "mistake": {
+      "atlasData": 9
+    },
+    "mistake1": {
+      "atlasURL": {}
+    },
+    "mistake2": {
+      "textureURL": ""
+    },
+    "mistake3": false
   },
   "audio": {
-    "audioTest": "assets/audioTest.mp3",
-    "audioTest1": ["assets/audioTest1.mp3", "assets/audioTest1.wav"],
-    "audioTest2": [{}, {}],
+    "audioTest": "audioTest.mp3",
+    "audioTest1": ["audioTest1.mp3", "audioTest.wav"],
+    "audioTest2": {
+      "urls": "audioTest2.mp3"
+    },
     "audioTest3": {
-      "urls": "assets/audioTest2.mp3",
-      "autoDecode": false
+      "urls": ["audioTest3.mp3", "audioTest1.wav"],
+      "autoDecode": true
     },
     "audioTest4": {
-      "urls": ["assets/audioTest3.mp3", "assets/audioTest3.wav"]
+      "urls": "audioTest4.mp3",
+      "autoDecode": false
     },
-    "audioTest5": {
-      "urls": [{}, {}]
+    "mistake": {},
+    "mistake1": true,
+    "mistake2": [],
+    "mistake3": "",
+    "mistake4": 45,
+    "mistake5": null,
+    "mistake6": {
+      "url": "audioTest.mp3"
+    },
+    "mistake7": {
+      "urls": false
+    },
+    "mistake8": {
+      "urls": ["audioTest1.mp3", "audioTest1.wav"],
+      "autoDecode": "helloWorld"
     }
   },
   "audioSprite": {
-    "audioSpriteTest": "assets/audioSpriteTest.ogg",
-    "audioSpriteTest1": ["assets/audioSpriteTest1.mp3", "assets/audioSpriteTest1.wav"],
+    "audioSpriteTest": {
+      "urls": "audioSpriteTest.ogg",
+      "jsonURL": "audioSpriteTest.json"
+    },
+    "audioSpriteTest1": {
+      "urls": ["audioSpriteTest1.ogg"],
+      "jsonData": {
+        "spritemap": {
+          "alien death": {
+            "start": 1,
+            "end": 2,
+            "loop": false
+          }
+        }
+      }
+    },
     "audioSpriteTest2": {
-      "urls": "assets/audioSpriteTest2.mp3",
-      "jsonURL": "assets/audioSpriteTest2.json",
-      "autoDecode": false
+      "urls": ["audioSpriteTest2.ogg"],
+      "jsonURL": "audioSpriteTest2.json",
+      "jsonData": {
+        "spritemap": {
+          "alien death": {
+            "start": 1,
+            "end": 2,
+            "loop": false
+          }
+        }
+      }
     },
     "audioSpriteTest3": {
-      "urls": ["assets/audioSpriteTest3.mp3", "assets/audioSpriteTest3.wav"],
-      "jsonData": {
+      "urls": ["audioSpriteTest3.ogg"],
+      "jsonURL": "audioSpriteTest3.json",
+      "autoDecode": false
+    },
+    "mistake": {},
+    "mistake1": "",
+    "mistake2": {
+      "url": "audioSpriteTest.ogg",
+      "jsonURL": "audioSpriteTest.json"
+    },
+    "mistake3": {
+      "urls": ""
+    },
+    "mistake4": {
+      "urls": "audioSpriteTest.ogg",
+      "jsonURL": {
         "test": "test"
       }
+    },
+    "mistake5": {
+      "urls": "audioSpriteTest.ogg",
+      "jsonData": "audioSpriteTest.json"
+    },
+    "mistake6": {
+      "urls": "audioSpriteTest.ogg",
+      "autoDecode": 56
     }
   },
   "binary": {
-    "binaryTest": "assets/binaryTest.bin"
+    "binaryTest": "binaryTest.bin",
+    "binaryTest1": {},
+    "binaryTest2": {
+      "url": "binaryTest2.bin"
+    },
+    "mistake": "",
+    "mistake1": [],
+    "mistake2": {
+      "url": false
+    }
   },
   "bitmapFont": {
-    "bitmapFontTest1": "bitmapFontTest",
-    "bitmapFontTest2": ["bitmapFontTest1", "bitmapFontTest2"],
-    "bitmapFontTest3": {
-      "textureURL": "assets/bitmapFontTest3.png",
-      "atlasURL": "assets/bitmapFontTest3.xml",
-      "xSpacing": 10,
-      "ySpacing": 5
+    "bitmapFontTest": {},
+    "bitmapFontTest1": {
+      "textureURL": "bitmapFontTest1.png"
     },
-    "bitmapFontTest4": {
-      "textureURL": "assets/bitmapFontTest4.png",
+    "bitmapFontTest2": {
+      "atlasURL": "bitmapFontTest2.xml"
+    },
+    "bitmapFontTest3": {
       "atlasData": {
         "test": "test"
       }
+    },
+    "bitmapFontTest4": {
+      "xSpacing": 3
+    },
+    "bitmapFontTest5": {
+      "ySpacing": 5
+    },
+    "bitmapFontTest6": {
+      "textureURL": "bitmapFontTest6.png",
+      "atlasURL": "bitmapFontTest6.xml"
+    },
+    "bitmapFontTest7": {
+      "textureURL": "bitmapFontTest7.png",
+      "atlasData": {
+        "test": "test"
+      }
+    },
+    "bitmapFontTest8": {
+      "textureURL": "bitmapFontTest8.png",
+      "atlasURL": "bitmapFontTest8.xml",
+      "atlasData": {
+        "test": "test"
+      },
+      "xSpacing": -10
+    },
+    "mistake": false,
+    "mistake1": {
+      "textureURL": 23
+    },
+    "mistake2": {
+      "atlasURL": {
+        "test": "test"
+      }
+    },
+    "mistake3": {
+      "ySpacing": null
     }
   },
   "image": {
-    "imageTest1": "assets/images/imageTest.png",
+    "imageTest": "imageTest.png",
+    "imageTest1": {},
     "imageTest2": {
-      "url": "assets/imageTest.jpeg",
+      "url": "imageTest2.png"
+    },
+    "imageTest3": {
+      "overwrite": false
+    },
+    "imageTest4": {
+      "url": "imageTest4.png",
       "overwrite": true
+    },
+    "mistake": [],
+    "mistake1": {
+      "url": null
+    },
+    "mistake2": {
+      "overwrite": {}
     }
   },
   "images": {
-    "keys": ["imagesTest3", "imagesTest4"],
-    "urls": ["imagesTest3.png", "imagesTest4.jpeg"]
+    "keys": ["imagesTest", "imagesTest1"],
+    "urls": ["imagesTest.png", "imagesTest1.png"]
   },
   "json": {
-    "jsonTest1": "assets/jsonTest.json",
+    "jsonTest": "jsonTest.json",
+    "jsonTest1": {},
     "jsonTest2": {
-      "url": "assets/jsonTest1.json",
+      "url": "jsonTest2.json"
+    },
+    "jsonTest3": {
+      "overwrite": false
+    },
+    "jsonTest4": {
+      "url": "jsonTest4.json",
       "overwrite": true
+    },
+    "mistake": [],
+    "mistake1": {
+      "url": 7
+    },
+    "mistake2": {
+      "overwrite": ""
     }
   },
   "pack": {
-    "packTest1": "assets/packTest.json",
-    "packTest2": {
-      "test": "test"
-    }
+    "packTest": "packTest.json",
+    "packTest1": {
+      "packTest1": [
+        {
+          "type": "image",
+          "key": "imageTest6",
+          "url": "imageTest6.png",
+          "overwrite": false
+        }
+      ]
+    },
+    "mistake": []
   },
   "physics": {
-    "physicsTest1": "assets/physicsTest.json",
+    "physicsTest": "physicsTest.json",
+    "physicsTest1": {},
     "physicsTest2": {
-      "url": "assets/physicsTest1.json",
-      "format": 4
+      "url": "physicsTest2.json"
     },
     "physicsTest3": {
-      "data": "assets/physicsTest2.png"
+      "data": {
+        "contra2": [
+          {
+            "density": 2,
+            "friction": 0,
+            "bounce": 0,
+            "filter": {
+              "categoryBits": 1,
+              "maskBits": 65535
+            },
+            "shape": [10, 191, 26, 158, 25, 186, 13, 204]
+          }
+        ]
+      }
     },
     "physicsTest4": {
+      "url": "physicsTest4.json",
       "data": {
-        "test": "test"
+        "contra2": [
+          {
+            "density": 2,
+            "friction": 0,
+            "bounce": 0,
+            "filter": {
+              "categoryBits": 1,
+              "maskBits": 65535
+            },
+            "shape": [10, 191, 26, 158, 25, 186, 13, 204]
+          }
+        ]
       }
+    },
+    "physicsTest5": {
+      "url": "physicsTest5.json",
+      "format": 3
+    },
+    "mistake": null,
+    "mistake1": {
+      "url": []
+    },
+    "mistake2": {
+      "format": 6
+    },
+    "mistake3": {
+      "data": ""
     }
   },
   "script": {
-    "scriptTest1": "assets/ScriptTest.js"
+    "scriptTest": "ScriptTest.js",
+    "ScriptTest1": {},
+    "scriptTest2": {
+      "url": "ScriptTest2.js"
+    },
+    "mistake": true,
+    "mistake1": {
+      "url": 5
+    }
   },
   "shader": {
-    "shaderTest1": "assets/shaderTest.frag",
+    "shaderTest": "shaderTest.frag",
+    "shaderTest1": {},
     "shaderTest2": {
-      "url": "assets/shaderTest1.frag",
+      "url": "shaderTest2.frag"
+    },
+    "shaderTest3": {
+      "overwrite": false
+    },
+    "shaderTest4": {
+      "url": "shaderTest4.frag",
       "overwrite": true
+    },
+    "mistake": false,
+    "mistake1": {
+      "url": []
+    },
+    "mistake2": {
+      "overwrite": null
     }
   },
   "spritesheet": {
     "spritesheetTest": {
-      "url": "assets/spritesheetTest.png",
+      "url": "spritesheetTest.png",
+      "frameWidth": 70,
+      "frameHeight": 70
+    },
+    "spritesheetTest1": {
+      "url": "spritesheetTest1.png",
       "frameWidth": 70,
       "frameHeight": 70,
-      "margin": 0
+      "frameMax": 30,
+      "margin": 10,
+      "spacing": 5
+    },
+    "mistake": "",
+    "mistake1": {},
+    "mistake2": {
+      "url": ""
+    },
+    "mistake3": {
+      "url": "spritesheetTest1.png",
+      "frameWidth": 70,
+      "frameHeight": null
+    },
+    "mistake4": {
+      "url": "spritesheetTest1.png",
+      "frameWidth": 70,
+      "frameHeight": 70,
+      "frameMax": 30,
+      "margin": 10,
+      "spacing": true
     }
   },
   "text": {
-    "textTest1": "assets/textTest.txt",
+    "textTest": "textTest.txt",
+    "textTest1": {},
     "textTest2": {
-      "url": "assets/textTest1.txt",
+      "url": "textTest2.txt"
+    },
+    "textTest3": {
+      "overwrite": false
+    },
+    "textTest4": {
+      "url": "textTest4.txt",
       "overwrite": true
+    },
+    "mistake": [],
+    "mistake1": {
+      "url": 6
+    },
+    "mistake2": {
+      "overwrite": ""
     }
   },
   "tilemap": {
-    "tilemapTest1": "assets/tilemapTest.json",
+    "tilemapTest": "tilemapTest.csv",
+    "tilemapTest1": {},
     "tilemapTest2": {
-      "url": "assets/tilemapTest1.json",
-      "format": 1
+      "url": "tilemapTest2.csv"
     },
     "tilemapTest3": {
-      "data": "assets/tilemapTest2.png"
+      "data": {
+        "height": 12,
+        "layers": [
+          {
+            "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            "height": 12,
+            "name": "backbackground",
+            "opacity": 1,
+            "type": "tilelayer",
+            "visible": true,
+            "width": 30,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 153, 0, 0, 0, 0, 0, 0, 0, 65, 0, 58, 0, 0, 41, 0, 0, 34, 34, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 153, 153, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 153, 153, 153, 0, 0, 0, 0, 0, 0, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153, 153],
+            "height": 12,
+            "name": "background",
+            "opacity": 1,
+            "type": "tilelayer",
+            "visible": true,
+            "width": 30,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 81, 0, 129, 104, 104, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 33, 104, 92, 0, 0, 0, 0, 0, 153, 0, 152, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 33, 104, 21, 153, 0, 81, 0, 0, 0, 0, 153, 0, 0, 152, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 21, 0, 0, 116, 104, 104, 104, 104, 104, 104, 92, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            "height": 12,
+            "name": "surface",
+            "opacity": 1,
+            "type": "tilelayer",
+            "visible": true,
+            "width": 30,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "height": 12,
+            "name": "items",
+            "objects": [
+              {
+                "height": 0,
+                "name": "",
+                "properties": {
+                },
+                "type": "",
+                "visible": true,
+                "width": 0,
+                "x": 1087,
+                "y": 580
+              },
+              {
+                "height": 0,
+                "name": "",
+                "properties": {
+                },
+                "type": "",
+                "visible": true,
+                "width": 0,
+                "x": 1995,
+                "y": 526
+              },
+              {
+                "height": 0,
+                "name": "",
+                "properties": {
+                },
+                "type": "",
+                "visible": true,
+                "width": 0,
+                "x": 1715,
+                "y": 528
+              },
+              {
+                "height": 0,
+                "name": "",
+                "properties": {
+                },
+                "type": "",
+                "visible": true,
+                "width": 0,
+                "x": 1716,
+                "y": 458
+              },
+              {
+                "height": 0,
+                "name": "",
+                "properties": {
+                },
+                "type": "",
+                "visible": true,
+                "width": 0,
+                "x": 1716,
+                "y": 389
+              }
+            ],
+            "opacity": 1,
+            "type": "objectgroup",
+            "visible": true,
+            "width": 30,
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "orientation": "orthogonal",
+        "properties": {
+        },
+        "tileheight": 70,
+        "tilesets": [
+          {
+            "firstgid": 1,
+            "image": ".\/spritesheetTest.png",
+            "imageheight": 910,
+            "imagewidth": 840,
+            "margin": 0,
+            "name": "spritesheetTest",
+            "properties": {
+            },
+            "spacing": 0,
+            "tileheight": 70,
+            "tilewidth": 70
+          }
+        ],
+        "tilewidth": 70,
+        "version": 1,
+        "width": 30
+      },
+      "format": 1
     },
     "tilemapTest4": {
-      "data": {
-        "test": "test"
-      }
+      "url": "tilemapTest4.json",
+      "format": 1
+    },
+    "mistake": null,
+    "mistake1": {
+      "url": []
+    },
+    "mistake2": {
+      "format": 6
+    },
+    "mistake3": {
+      "data": ""
     }
   },
   "video": {
-    "videoTest1": "assets/videoTest.mp4",
-    "videoTest2": ["assets/videoTest1.mp4", "assets/videoTest2.mp4"],
-    "videoTest3": [{}, {}],
-    "videoTest4": {
-      "urls": "assets/videoTest3.mp4",
-      "loadEvent": "loadeddata"
+    "videoTest": "videoTest.mp4",
+    "videoTest1": ["videoTest1.mp4", "videoTest2.mp4"],
+    "videoTest2": {
+      "urls": "videoTest3.mp4"
     },
-    "videoTest5": {
-      "urls": ["assets/videoTest4.mp4", "assets/videoTest5.mp4"],
-      "asBlob": true
-    },
-    "videoTest6": {
-      "urls": [{}, {}],
+    "videoTest3": {
+      "urls": ["videoTest4.mp4", "videoTest5.mp4"],
       "loadEvent": "canplay",
-      "asBlob": true
+      "asBlob": false
+    },
+    "mistake": {},
+    "mistake1": {
+      "urls": "videoTest3.mp4",
+      "loadEvent": ""
+    },
+    "mistake2": {
+      "urls": "videoTest3.mp4",
+      "loadEvent": "loadeddata",
+      "asBlob": 8
     }
   },
   "xml": {
-    "xmlTest1": "assets/xmlTest.xml",
+    "xmlTest": "xmlTest.xml",
+    "xmlTest1": {},
     "xmlTest2": {
-      "url": "assets/xmlTest1.xml",
+      "url": "xmlTest2.xml"
+    },
+    "xmlTest3": {
+      "overwrite": false
+    },
+    "xmlTest4": {
+      "url": "xmlTest4.xml",
       "overwrite": true
+    },
+    "mistake": 9,
+    "mistake1": {
+      "url": {}
+    },
+    "mistake2": {
+      "overwrite": null
     }
   }
 }

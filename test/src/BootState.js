@@ -15,7 +15,7 @@ class BootState extends Phaser.State {
         // this.game.test = GameKeys.TEST_ARRAY_EMPTY;
         // this.game.test = GameKeys.TEST_ARRAY_EXISTING;
         // this.game.test = GameKeys.TEST_OBJECT_EMPTY;
-        this.game.test = GameKeys.TEST_OBJECT_ATLAS;
+        this.game.test = GameKeys.TEST_OBJECT_EXISTING;
 
         this.game.load.json(AssetKeys.ASSETS, this.game.test);
 

@@ -152,7 +152,7 @@ Please see [template.json](/test/data/template.json) for the most common (and re
             },
             "format": 1
         },
-        "key": {} //an empty object will load the image with all the defaults: (key, <key>.png, <key>.json, null, 0)
+        "key": {} //an empty object will load the atlas with all the defaults: (key, <key>.png, <key>.json, null, 0)
     }
 ---
     FORMATS:
@@ -178,7 +178,8 @@ Please see [template.json](/test/data/template.json) for the most common (and re
             "atlasURL": "relative/path/name.json",
             "atlasData": { 
                 // If you give an "atlasData" object, "atlasURL" will be ignored. It's either/or. 
-            }
+        },
+        "key": {} //an empty object will load the atlasJSONArray with all the defaults: (key, <key>.png, <key>.json, null)
         }
     }
      
@@ -203,7 +204,8 @@ Please see [template.json](/test/data/template.json) for the most common (and re
             "atlasURL": "relative/path/name.xml",
             "atlasData": { 
                 // If you give an "atlasData" object, "atlasURL" will be ignored. It's either/or. 
-            }
+            },
+            "key": {} //an empty object will load the atlasXML with all the defaults: (key, <key>.png, <key>.xml, null)
         }
     }
 
@@ -217,7 +219,6 @@ Please see [template.json](/test/data/template.json) for the most common (and re
     "audio": {
         "key": "relative/path/name.mp3",
         "key": ["relative/path/name.mp3", "relative/path/name.wav"],
-        "key": [{}, {}],
         "key": {
             "urls": "relative/path/name.mp3",   // {string | Array.<string> | Array.<object>}
             "autoDecode": false
@@ -259,13 +260,11 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
     "binary": ["key", "key"]
 ---
     "binary": {
-        "key": "relative/path/name.bin"
-    }
----
-    "binary: {
+        "key": "relative/path/name.bin",
         "key": {
             "url": "relative/path/name.bin"
-        }
+        },
+        "key": {} //an empty object will load the binary with the defaults: (key, <key>.bin)
     }
      
 #### [bitmapFont(key, textureURL, atlasURL, atlasData, xSpacing, ySpacing)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#bitmapFont)
@@ -291,7 +290,8 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
             }
             "xSpacing": 10,
             "ySpacing": 5
-        }
+        },
+        "key": {} //an empty object will load the bitmapFont with the defaults: (key, <key>.png, <key>.xml, null, 0, 0)
     }
      
 #### [image(key, url, overwrite)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#image)
@@ -411,12 +411,10 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
 ---
     "script": {
         "key": "relative/path/name.js",
-    }
----
-    "script: {
         "key": {
             "url": "relative/path/name.js"
-        }
+        },
+        "key": {} //an empty object will load the script with the defaults: (key, <key>.js)
     }
 
 #### [shader(key, url, overwrite)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#shader)
@@ -484,7 +482,7 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
 #### [tilemap(key, url, data, format)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#tilemap)
     /**
      * @param {string} key
-     * @param {string} [url = <key>.json]
+     * @param {string} [url = <key>.csv] //NOTE: the phaser docs have a typo saying .json is the default, but it is .csv
      * @param {object | string} [data = null]
      * @param {number} [format = 0]
      */
@@ -494,16 +492,16 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
     "tilemap": ["key", "key"]
 ---
     "tilemap": {
-        "key": "relative/path/name.json",
+        "key": "relative/path/name.csv",
         "key": {
-            "url": "relative/path/name.json",
+            "url": "relative/path/name.csv",
             "data": {
                 // "data" can either be an object or a strinified json
                 // If you give a "data" object, "url" will be ignored. It's either/or. 
             },
             "format": 1
         },
-        "key": {} //an empty object will load the tilmap with all the defaults: (key, <key>.json, null, 0)
+        "key": {} //an empty object will load the tilmap with all the defaults: (key, <key>.csv, null, 0)
     }
 ---     
     FORMATS:
@@ -519,11 +517,10 @@ Note: we cannot pass in a callback from a json. You will want to load your binar
      */
  ---
     "video": {
-        "key": "relative/path/name.mp3",
-        "key": ["relative/path/name.mp3", "relative/path/name.wav"],
-        "key": [{}, {}],
+        "key": "relative/path/name.mp4",
+        "key": ["relative/path/name.mp4", "relative/path/name1.mp4"],
         "key": {
-            "urls": "relative/path/name.mp3",   // {string | Array.<string> | Array.<object>}
+            "urls": "relative/path/name.mp4",   // {string | Array.<string> | Array.<object>}
             "loadEvent": "loadeddata",
             "asBlob": true
         }

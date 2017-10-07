@@ -35,17 +35,8 @@ Object.defineProperties(GameKeys, {
     "TEST_OBJECT_EMPTY": {
         value: "data/object/empty.json"
     },
-    "TEST_OBJECT_ATLAS":{
-        value:"data/object/atlas.json"
-    },
-    "TEST_OBJECT_ATLAS_JSON":{
-        value:"data/object/atlasJSON.json"
-    },
-    "TEST_OBJECT_ATLAS_XML":{
-        value:"data/object/atlasXML.json"
-    },
-    "TEST_OBJECT_AUDIO":{
-        value:"data/object/audio.json"
+    "TEST_OBJECT_EXISTING":{
+        value:"data/object/existing.json"
     }
 });
 

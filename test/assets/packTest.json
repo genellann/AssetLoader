@@ -2,8 +2,8 @@
   "packTest": [
     {
       "type": "image",
-      "key": "imageTest3",
-      "url": "imageTest3.png",
+      "key": "imageTest5",
+      "url": "imageTest5.png",
       "overwrite": false
     }
   ]

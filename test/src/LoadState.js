@@ -6,7 +6,6 @@
 
 import AssetKeys from "./AssetKeys";
 import GameKeys from "./GameKeys";
-import AssetLoader from "../lib/AssetLoader";
 
 class LoadState extends Phaser.State {
 
