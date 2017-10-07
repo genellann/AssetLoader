@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/genradley/PhaserAssetLoader.git"
+    "url": "https://github.com/genradley/AssetLoader.git"
   },
   "keywords": [
     "phaser",
@@ -34,7 +34,7 @@
   "author": "Genell Radley",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/genradley/PhaserAssetLoader/issues"
+    "url": "https://github.com/genradley/AssetLoader/issues"
   },
-  "homepage": "https://github.com/genradley/PhaserAssetLoader"
+  "homepage": "https://github.com/genradley/AssetLoader"
 }

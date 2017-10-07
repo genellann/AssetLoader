@@ -115,7 +115,7 @@ If you are using a preload sprite, an image that will show during the loading pe
     }
 
 ## RECOMMENDATIONS
-Please use constants for your keys.
+I recommend using constants for your keys.
 
 Constants have great benefits, including but not limited to:
 - They protect your code from typos. 
@@ -124,7 +124,7 @@ Constants have great benefits, including but not limited to:
 
 You can add consts at the bottom of any class with Object.defineProperties(). Consts are ALL-CAPS by convention.
 
-I often make an empty class just to use as a holder for my consts. This is called an enum.
+I often make an empty class (as an enum) just to use as a holder for my consts.
    
     assets.json = {
         "image": {
@@ -132,7 +132,7 @@ I often make an empty class just to use as a holder for my consts. This is calle
             "playBtn": "path/play.jpg"
         }
     }
-    ---
+---
     class AssetKeys {
     }
     Object.defineProperties(AssetKeys, {
@@ -143,7 +143,7 @@ I often make an empty class just to use as a holder for my consts. This is calle
             value: "playBtn"
         }
     }
-    ---
+---
     import AssetKeys from "./AssetKeys"
     
     class SomeClass {
@@ -156,18 +156,6 @@ I often make an empty class just to use as a holder for my consts. This is calle
 ## UNIT TESTS
 In order to test the AssetLoader, I made a simple Phaser game that loads assets and puts them on the stage. There are several json files that I run the game with in order to test the various json structures available. I also ran the test in both Phaser.WEBGL and Phaser.CANVAS modes.
 
-### How to run the tests
-1. Run npm install
-- From the command line, navigate to the test root ([test/](/test))
-- Type: _npm install_
-- Wait while the modules download. Watch the console output for errors. Address them if any.
-2. Run grunt task
-- Once your node modules are downloaded, type _grunt_ into you command line
-- Wait until you get a confirmation build message
-3. Open index.html in the browser
-4. Open the inspector or dev tools in your browser 
-- You will see assets on the stage and console output indicating that the tests passed.
-
 Please open an [issue](https://github.com/genradley/AssetLoader/issues) if you find any bugs. We will fix the issue and add a test for it.
 
 ## JSDOCS
@@ -175,7 +163,7 @@ Please download or clone the repo and open [/main/docs/index.html](/main/docs/in
 
 ## MY OTHER GITHUB PROJECTS
 
-[Align](https://github.com/genradley/Align) - A library for aligning display objects in relation to one another.
+[Align](https://github.com/genradley/Align) - A javascript library for aligning display objects in relation to one another.
 
 [Signals](https://github.com/genradley/Signals) - A library for Phaser. Add **_any_** listener to **_any_** signal. Dispatch **_any_** signal **_anywhere/anytime_**.
 
