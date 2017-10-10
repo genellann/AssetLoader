@@ -7,8 +7,14 @@ It is messy and error prone. You'll end up with something probably even worse th
 
 ![whyAssetLoader](/test/assets/whyAssetLoader.png)
 
-With the AssetLoader, this will condense into just a few lines of code. All the loading calls are done for you.
+With the AssetLoader, this will condense into just 2 lines of code:
 
+    this.game.load.json("assets", "assets.json");
+    
+    new AssetLoader(this.game, this.game.cache.getJSON("assets"));
+    
+All the loading calls are done for you!
+    
 Another benefit of using the AssetLoader is that now the details of where to find your assets will be outside of your code base.
 You can swap out assets easily without modifying your code. Or, point to different json files conditionally. 
 For example, if you have a game with different themes that a player can choose, you can have a json file per theme and load it dynamically.
