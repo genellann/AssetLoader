@@ -17,7 +17,7 @@ All the loading calls are done for you!
     
 Another benefit of using the AssetLoader is that now the details of where to find your assets will be outside of your code base. This follows the [Pragmatic programmer](https://pragprog.com/the-pragmatic-programmer/extracts/tips) tip, **"Put abstractions in code, details in metadata"**.
 You can swap out assets easily without modifying your code. You can also point to different json files conditionally. 
-For example, if you have a game with different themes that a player can choose, you can have a json file per theme and load it dynamically.
+For example, if you have a game with different themes, you can have a json file per theme and load it dynamically.
 
 The Phaser AssetLoader library was written with Phaser version 2.6.2. It should work with Phaser CE. Tests for that coming soon...
 
