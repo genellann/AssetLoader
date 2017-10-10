@@ -302,9 +302,9 @@ Sometimes, there are Loader function params that are optional. The have a defaul
             "atlasURL": "relative/path/name.xml",
             "atlasData": { 
                 // If you give an "atlasData" object, "atlasURL" will be ignored. It's either/or. 
-            },
-            "key": {} //an empty object will load the atlasXML with all the defaults: (key, <key>.png, <key>.xml, null)
-        }
+            }
+        },
+        "key": {} //an empty object will load the atlasXML with all the defaults: (key, <key>.png, <key>.xml, null)
     }
 
 ### [audio(key, urls, autoDecode)](http://phaser.io/docs/2.6.2/Phaser.Loader.html#audio)
