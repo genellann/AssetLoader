@@ -1,5 +1,18 @@
 # Phaser Asset Loader
 
+A library for loading assets from an external json file.
+
+The way Phaser works out of the box, you end up with a load state with lines and lines of code just for loading keys and paths to assets into your game.
+It is messy and error prone. You'll end up with something probably even worse than this:
+
+![whyAssetLoader](/test/assets/whyAssetLoader.png)
+
+With the AssetLoader, this will condense into just a few lines of code. All the loading calls are done for you.
+
+Another benefit of using the AssetLoader is that now the details of where to find your assets will be outside of your code base.
+You can swap out assets easily without modifying your code. Or, point to different json files conditionally. 
+For example, if you have a game with different themes that a player can choose, you can have a json file per theme and load it dynamically.
+
 The Phaser AssetLoader library was written with Phaser version 2.6.2. It should work with Phaser CE. Tests for that coming soon...
 
 ## CODE  
